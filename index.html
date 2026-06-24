@@ -112,16 +112,12 @@
     white-space: nowrap;
   }
 
-  .logo-mark {
-    width: 30px;
-    height: 30px;
-    border-radius: 12px;
-    background:
-      radial-gradient(circle at 30% 30%, #fff4d2 0 16%, transparent 17%),
-      conic-gradient(from 40deg, var(--ember), var(--coral), var(--leaf), var(--ember));
-    box-shadow: 0 6px 18px rgba(242, 163, 60, 0.25);
-    flex-shrink: 0;
-  }
+.logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 10px;
+}
 
   .nav-links {
     display: flex;
@@ -153,7 +149,7 @@
     font-weight: 700;
     cursor: pointer;
   }
-
+  
   /* ---------- BUTTONS ---------- */
   .btn {
     display: inline-flex;
@@ -925,8 +921,8 @@
 <nav>
   <div class="nav-inner">
     <a class="logo" href="#home">
-      <span class="logo-mark" aria-hidden="true"></span>
-      Cheza 4 Afya Akili
+      <img src="cheza logo.jpeg" alt="Cheza 4 Afya Akili Logo" class="logo-img">
+      <span>Cheza 4 Afya Akili</span>
     </a>
 
     <input class="menu-toggle" type="checkbox" id="menu-toggle">
@@ -1340,8 +1336,8 @@
     <div class="footer-inner">
       <div>
         <div class="logo" style="margin-bottom: 6px;">
-          <span class="logo-mark" aria-hidden="true"></span>
-          Cheza 4 Afya Akili
+          <img src="cheza logo.jpeg" alt="Cheza 4 Afya Akili Logo" class="logo-img">
+          <span>Cheza 4 Afya Akili</span>
         </div>
         <div class="footer-tagline">Cheza. Play. Heal. Grow.</div>
       </div>
