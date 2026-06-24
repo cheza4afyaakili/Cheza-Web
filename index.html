@@ -1376,7 +1376,7 @@
     <div class="wrap">
       <div class="footer-inner">
         <a class="brand" href="#top" aria-label="Cheza 4 Afya Akili home">
-          <span class="brand-mark" aria-hidden="true"></span>
+          <img src="cheza logo.jpeg" alt="Cheza 4 Afya Akili Logo" class="logo-img">
           <span class="brand-name">
             <span>CHEZA 4</span>
             <span>Afya Akili</span>
@@ -1413,6 +1413,51 @@
       });
     });
 
+
+    // Translate all visible page text. Each English phrase below is matched wherever it appears.
+    const pageTranslations = {
+      sw: {
+        "Problem":"Tatizo","Solution":"Suluhisho","Games":"Michezo","Model":"Mfumo","Impact":"Matokeo","Team":"Timu",
+        "Join Waitlist":"Jiunge na Orodha ya Kusubiri","Join the Waitlist":"Jiunge na Orodha ya Kusubiri","See How It Works":"Tazama Jinsi Inavyofanya Kazi","Watch Demo":"Tazama Onyesho",
+        "The problem":"Tatizo","Youth need support before crisis point.":"Vijana wanahitaji msaada kabla ya kufikia hatua ya mgogoro.",
+        "The solution":"Suluhisho","A gamified wellness platform built for African children and adolescents.":"Jukwaa la ustawi lenye michezo lililoundwa kwa watoto na vijana wa Afrika.",
+        "Games":"Michezo","Play-based healing adventures for young minds.":"Matukio ya uponyaji kupitia mchezo kwa akili changa.",
+        "Why Cheza 4 Afya Akili":"Kwa nini Cheza 4 Afya Akili","Built FOR Africa, not imported to Africa.":"Imeundwa KWA Afrika, si kuletwa tu Afrika.",
+        "Business model":"Mfumo wa biashara","Sustainable revenue while keeping core access free.":"Mapato endelevu huku huduma za msingi zikibaki bure.",
+        "Scalability":"Uwezo wa kupanuka","From East Africa to the Global South.":"Kutoka Afrika Mashariki hadi Kusini mwa Dunia.",
+        "Impact metrics":"Vipimo vya matokeo","How success will be measured.":"Jinsi mafanikio yatakavyopimwa.",
+        "Meet the team":"Kutana na timu","The people building Cheza 4 Afya Akili.":"Watu wanaojenga Cheza 4 Afya Akili.",
+        "Help build the future of youth mental health in Africa.":"Saidia kujenga mustakabali wa afya ya akili ya vijana barani Afrika.",
+        "Request Early Access":"Omba Ufikiaji wa Mapema","Email Our Team":"Tuma Barua kwa Timu Yetu",
+        "AI-powered youth wellness":"Ustawi wa vijana unaotumia AI",
+        "Cheza. Play. Heal. Grow.":"Cheza. Cheza. Ponya. Kua."
+      },
+      rw: {
+        "Problem":"Ikibazo","Solution":"Igisubizo","Games":"Imikino","Model":"Uburyo","Impact":"Ingaruka","Team":"Itsinda",
+        "Join Waitlist":"Iyandikishe ku Rutonde","Join the Waitlist":"Iyandikishe ku Rutonde","See How It Works":"Reba Uko Bikora","Watch Demo":"Reba Demo",
+        "The problem":"Ikibazo","Youth need support before crisis point.":"Urubyiruko rukeneye ubufasha mbere y'uko ikibazo gikomera.",
+        "The solution":"Igisubizo","A gamified wellness platform built for African children and adolescents.":"Urubuga rw'ubuzima bwo mu mutwe rufite imikino rwagenewe abana n'urubyiruko rw'Afurika.",
+        "Games":"Imikino","Play-based healing adventures for young minds.":"Kwamamaza gukira binyuze mu mikino ku bitekerezo bikiri bito.",
+        "Why Cheza 4 Afya Akili":"Impamvu Cheza 4 Afya Akili","Built FOR Africa, not imported to Africa.":"Byubakiwe Afurika, si ikintu cyinjijwe muri Afurika.",
+        "Business model":"Uburyo bw'ubucuruzi","Sustainable revenue while keeping core access free.":"Kwamamaza amafaranga arambye mu gihe serivisi z'ibanze zikomeza kuba ubuntu.",
+        "Scalability":"Kwamamaza kwaguka","From East Africa to the Global South.":"Kuva muri Afurika y'Iburasirazuba kugera mu Bihugu byo mu Majyepfo.",
+        "Impact metrics":"Ibipimo by'ingaruka","How success will be measured.":"Uko intsinzi izapimwa.",
+        "Meet the team":"Menya itsinda","The people building Cheza 4 Afya Akili.":"Abantu bari kubaka Cheza 4 Afya Akili.",
+        "Help build the future of youth mental health in Africa.":"Fasha kubaka ejo hazaza h'ubuzima bwo mu mutwe bw'urubyiruko muri Afurika.",
+        "Request Early Access":"Saba Kwinjira Mbere","Email Our Team":"Ohereza Imeri ku Itsinda",
+        "AI-powered youth wellness":"Ubuzima bw'urubyiruko bukoresha AI",
+        "Cheza. Play. Heal. Grow.":"Cheza. Kina. Kira. Kura."
+      }
+    };
+
+    // Preserve original English once, then translate all matching text nodes throughout the page.
+    const originalTextNodes = [];
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let textNode;
+    while ((textNode = walker.nextNode())) {
+      if (textNode.nodeValue.trim()) originalTextNodes.push([textNode, textNode.nodeValue]);
+    }
+
     const translations = {
       en: {
         hero_subtitle: "Healing Through Play — mental wellness for African children and adolescents.",
@@ -1431,6 +1476,12 @@
     document.getElementById('languageSwitcher').addEventListener('change', function () {
       const lang = this.value;
       document.documentElement.lang = lang;
+      originalTextNodes.forEach(([node, original]) => {
+        const trimmed = original.trim();
+        const translated = pageTranslations[lang] && pageTranslations[lang][trimmed];
+        if (translated) node.nodeValue = original.replace(trimmed, translated);
+        else node.nodeValue = original;
+      });
       document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.dataset.i18n;
         if (translations[lang][key]) el.textContent = translations[lang][key];
