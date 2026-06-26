@@ -6,17 +6,6 @@
   <meta name="description" content="Cheza 4 Afya Akili is an AI-powered, gamified mental wellness platform for African children and adolescents." />
   <title>Cheza 4 Afya Akili — Healing Through Play</title>
 
-  <!--
-    ============================================================
-    QUICK EDIT GUIDE
-    ============================================================
-    1) Waitlist link currently uses: https://forms.gle/VUsFSAW7BvtLRp748
-    2) Early access link currently uses the same form. Replace it later if needed.
-    3) Partner email uses Gmail compose for: afyaakilicheza@gmail.com
-    4) This is a single-file website: HTML + CSS + JavaScript are all here.
-    ============================================================
-  -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Playfair+Display:wght@700;800&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -35,1053 +24,197 @@
       --green: #3f8f5f;
       --pink: #f06a8c;
       --white: #ffffff;
-      --shadow: 0 18px 45px rgba(17, 17, 17, 0.10);
+      --shadow: 0 18px 45px rgba(17,17,17,0.10);
       --radius-lg: 28px;
       --radius-md: 18px;
       --max-width: 1180px;
     }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Work Sans", sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
+    img, svg { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; border-radius: 8px; }
+    .wrap { width: min(var(--max-width), calc(100% - 40px)); margin: 0 auto; }
+    .section { padding: 92px 0; position: relative; }
+    .section.alt { background: var(--sky); }
+    .section.dark { background: var(--ink); color: var(--cream-2); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); margin-bottom: 12px; }
+    .eyebrow::before { content: "✦"; color: var(--teal); font-size: 1rem; }
+    .section.dark .eyebrow { color: var(--yellow); }
+    .section.dark .eyebrow::before { color: var(--orange); }
+    .section-title { font-family: "Playfair Display", serif; font-size: clamp(2rem, 4vw, 4rem); line-height: 1; margin-bottom: 16px; letter-spacing: -0.04em; }
+    .script { font-family: "Caveat Brush", cursive; font-weight: 400; letter-spacing: 0; }
+    .red-line { width: 180px; height: 10px; background: var(--rust); border-radius: 100px; transform: rotate(-1deg); margin: 14px 0 20px; box-shadow: 0 2px 0 rgba(168,50,18,0.18); }
+    .lead { font-size: clamp(1rem,1.6vw,1.2rem); color: var(--muted); max-width: 760px; }
+    .section.dark .lead { color: rgba(255,249,236,0.72); }
+    .two-col { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center; }
+    .grid-2, .grid-3, .grid-4 { display: grid; gap: 22px; }
+    .grid-2 { grid-template-columns: repeat(2,1fr); }
+    .grid-3 { grid-template-columns: repeat(3,1fr); }
+    .grid-4 { grid-template-columns: repeat(4,1fr); }
+    .card { background: var(--cream-2); border: 1px solid rgba(17,17,17,0.08); border-radius: var(--radius-md); padding: 26px; box-shadow: 0 1px 0 rgba(17,17,17,0.04); transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .section.dark .card { background: rgba(255,249,236,0.08); border-color: rgba(255,249,236,0.14); }
+    .card h3 { font-size: 1.15rem; line-height: 1.25; margin-bottom: 10px; }
+    .card p, .card li { color: var(--muted); font-size: 0.96rem; }
+    .section.dark .card p, .section.dark .card li { color: rgba(255,249,236,0.74); }
+    .icon-bubble { width: 52px; height: 52px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.45rem; background: var(--yellow); margin-bottom: 16px; box-shadow: inset 0 -5px 0 rgba(0,0,0,0.07); }
+    .tag { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 999px; background: var(--yellow); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 14px 24px; border-radius: 999px; font-weight: 800; border: 2px solid transparent; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; white-space: nowrap; }
+    .btn-primary { background: var(--orange); color: var(--ink); box-shadow: 0 12px 28px rgba(244,123,32,0.28); }
+    .btn-primary:hover { transform: translateY(-2px); background: var(--yellow); }
+    .btn-secondary { border-color: var(--ink); background: transparent; color: var(--ink); }
+    .btn-secondary:hover { background: var(--ink); color: var(--cream-2); transform: translateY(-2px); }
+    .btn-light { border-color: rgba(255,249,236,0.5); background: transparent; color: var(--cream-2); }
+    .btn-light:hover { background: var(--cream-2); color: var(--ink); transform: translateY(-2px); }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Work Sans", sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    img, svg {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid var(--orange);
-      outline-offset: 4px;
-      border-radius: 8px;
-    }
-
-    .wrap {
-      width: min(var(--max-width), calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 92px 0;
-      position: relative;
-    }
-
-    .section.alt {
-      background: var(--sky);
-    }
-
-    .section.dark {
-      background: var(--ink);
-      color: var(--cream-2);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--rust);
-      margin-bottom: 12px;
-    }
-
-    .eyebrow::before {
-      content: "✦";
-      color: var(--teal);
-      font-size: 1rem;
-    }
-
-    .section.dark .eyebrow {
-      color: var(--yellow);
-    }
-
-    .section.dark .eyebrow::before {
-      color: var(--orange);
-    }
-
-    .section-title {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(2rem, 4vw, 4rem);
-      line-height: 1;
-      margin-bottom: 16px;
-      letter-spacing: -0.04em;
-    }
-
-    .script {
-      font-family: "Caveat Brush", cursive;
-      font-weight: 400;
-      letter-spacing: 0;
-    }
-
-    .red-line {
-      width: 180px;
-      height: 10px;
-      background: var(--rust);
-      border-radius: 100px;
-      transform: rotate(-1deg);
-      margin: 14px 0 20px;
-      box-shadow: 0 2px 0 rgba(168, 50, 18, 0.18);
-    }
-
-    .lead {
-      font-size: clamp(1rem, 1.6vw, 1.2rem);
-      color: var(--muted);
-      max-width: 760px;
-    }
-
-    .section.dark .lead {
-      color: rgba(255, 249, 236, 0.72);
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 44px;
-      align-items: center;
-    }
-
-    .grid-2,
-    .grid-3,
-    .grid-4 {
-      display: grid;
-      gap: 22px;
-    }
-
-    .grid-2 { grid-template-columns: repeat(2, 1fr); }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid-4 { grid-template-columns: repeat(4, 1fr); }
-
-    .card {
-      background: var(--cream-2);
-      border: 1px solid rgba(17, 17, 17, 0.08);
-      border-radius: var(--radius-md);
-      padding: 26px;
-      box-shadow: 0 1px 0 rgba(17, 17, 17, 0.04);
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-      transition: 0.22s ease;
-    }
-
-    .section.dark .card {
-      background: rgba(255, 249, 236, 0.08);
-      border-color: rgba(255, 249, 236, 0.14);
-    }
-
-    .card h3 {
-      font-size: 1.15rem;
-      line-height: 1.25;
-      margin-bottom: 10px;
-    }
-
-    .card p,
-    .card li {
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .section.dark .card p,
-    .section.dark .card li {
-      color: rgba(255, 249, 236, 0.74);
-    }
-
-    .icon-bubble {
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.45rem;
-      background: var(--yellow);
-      margin-bottom: 16px;
-      box-shadow: inset 0 -5px 0 rgba(0, 0, 0, 0.07);
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--yellow);
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 48px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      font-weight: 800;
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--orange);
-      color: var(--ink);
-      box-shadow: 0 12px 28px rgba(244, 123, 32, 0.28);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      background: var(--yellow);
-    }
-
-    .btn-secondary {
-      border-color: var(--ink);
-      background: transparent;
-      color: var(--ink);
-    }
-
-    .btn-secondary:hover {
-      background: var(--ink);
-      color: var(--cream-2);
-      transform: translateY(-2px);
-    }
-
-    .btn-light {
-      border-color: rgba(255, 249, 236, 0.5);
-      background: transparent;
-      color: var(--cream-2);
-    }
-
-    .btn-light:hover {
-      background: var(--cream-2);
-      color: var(--ink);
-      transform: translateY(-2px);
-    }
-
-    /* NAVIGATION */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(251, 241, 224, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
-    }
-
-    .nav-inner {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
-
-    .logo-img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      border-radius: 10px;
-      flex-shrink: 0;
-    }
-
-    .lang-switcher {
-      border-radius: 10px;
-      padding: 8px 10px;
-      border: 1px solid rgba(17, 17, 17, 0.15);
-      font: inherit;
-      font-size: 0.88rem;
-      font-weight: 700;
-      background: var(--white);
-      color: var(--ink);
-      cursor: pointer;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 34% 30%, #fff2b8 0 20%, var(--yellow) 21% 50%, var(--orange) 51% 72%, var(--teal) 73% 100%);
-      position: relative;
-      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.12);
-    }
-
-    .brand-mark::after {
-      content: "4";
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      font-family: "Playfair Display", serif;
-      font-weight: 800;
-      color: var(--ink);
-      font-size: 1.1rem;
-    }
-
-    .brand-name {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05;
-    }
-
-    .brand-name span:first-child {
-      font-size: 1rem;
-    }
-
-    .brand-name span:last-child {
-      font-family: "Caveat Brush", cursive;
-      font-size: 1.08rem;
-      color: var(--rust);
-      font-weight: 400;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-    }
-
-    .nav-links a:not(.btn) {
-      font-size: 0.92rem;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .nav-links a:not(.btn):hover {
-      color: var(--rust);
-    }
-
-    .menu-btn {
-      display: none;
-      background: var(--ink);
-      color: var(--cream-2);
-      border: none;
-      border-radius: 12px;
-      padding: 10px 12px;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(251,241,224,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(17,17,17,0.08); }
+    .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: -0.03em; }
+    .logo-img { width: 42px; height: 42px; object-fit: contain; border-radius: 10px; flex-shrink: 0; }
+    .brand-mark { width: 42px; height: 42px; border-radius: 50%; background: radial-gradient(circle at 34% 30%, #fff2b8 0 20%, var(--yellow) 21% 50%, var(--orange) 51% 72%, var(--teal) 73% 100%); position: relative; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.12); }
+    .brand-mark::after { content: "4"; position: absolute; inset: 0; display: grid; place-items: center; font-family: "Playfair Display", serif; font-weight: 800; color: var(--ink); font-size: 1.1rem; }
+    .brand-name { display: flex; flex-direction: column; line-height: 1.05; }
+    .brand-name span:first-child { font-size: 1rem; }
+    .brand-name span:last-child { font-family: "Caveat Brush", cursive; font-size: 1.08rem; color: var(--rust); font-weight: 400; }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a:not(.btn) { font-size: 0.92rem; color: var(--muted); font-weight: 700; }
+    .nav-links a:not(.btn):hover { color: var(--rust); }
+    .menu-btn { display: none; background: var(--ink); color: var(--cream-2); border: none; border-radius: 12px; padding: 10px 12px; font-size: 1.1rem; cursor: pointer; }
+    .lang-switcher { border-radius: 10px; padding: 8px 10px; border: 1px solid rgba(17,17,17,0.15); font: inherit; font-size: 0.88rem; font-weight: 700; background: var(--white); color: var(--ink); cursor: pointer; }
 
     /* HERO */
-    .hero {
-      min-height: calc(100vh - 76px);
-      padding: 86px 0 70px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(248, 217, 118, 0.65);
-      z-index: 0;
-    }
-
-    .hero::before {
-      width: 440px;
-      height: 440px;
-      left: -190px;
-      bottom: -100px;
-    }
-
-    .hero::after {
-      width: 360px;
-      height: 360px;
-      right: -130px;
-      top: 80px;
-    }
-
-    .hero .wrap {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-title {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(3.6rem, 8.4vw, 8rem);
-      line-height: 0.86;
-      letter-spacing: -0.07em;
-      margin-bottom: 14px;
-    }
-
-    .hero-title .script {
-      display: inline-block;
-      font-size: 0.62em;
-      color: var(--ink);
-      letter-spacing: 0;
-      transform: rotate(-3deg);
-      margin-left: 8px;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.16rem, 2.2vw, 1.65rem);
-      margin: 18px 0 18px;
-      color: var(--ink);
-      font-weight: 600;
-      max-width: 780px;
-    }
-
-    .hero-copy {
-      color: var(--muted);
-      max-width: 720px;
-      font-size: 1.06rem;
-      margin-bottom: 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-      margin-top: 28px;
-    }
-
-    .hero-art {
-      min-height: 480px;
-      border-radius: 46% 54% 48% 52% / 53% 44% 56% 47%;
-      background: var(--yellow);
-      position: relative;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      border: 8px solid rgba(255, 249, 236, 0.8);
-    }
-
-    .hero-art::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.55) 0 10%, transparent 11%),
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.45) 0 8%, transparent 9%),
-        radial-gradient(circle at 65% 85%, rgba(244, 123, 32, 0.25) 0 18%, transparent 19%);
-    }
-
-    .character-card {
-      position: absolute;
-      width: 180px;
-      height: 220px;
-      background: var(--cream-2);
-      border: 3px solid var(--ink);
-      border-radius: 28px;
-      box-shadow: 10px 12px 0 rgba(17, 17, 17, 0.18);
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-    }
-
-    .character-card.one {
-      left: 8%;
-      bottom: 12%;
-      transform: rotate(-7deg);
-    }
-
-    .character-card.two {
-      right: 8%;
-      top: 14%;
-      transform: rotate(7deg);
-    }
-
-    .character-card.three {
-      left: 34%;
-      top: 31%;
-      transform: rotate(-1deg);
-    }
-
-    .face {
-      width: 86px;
-      height: 86px;
-      border-radius: 50%;
-      background: #a85f31;
-      position: relative;
-      margin-bottom: 16px;
-    }
-
-    .face::before {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 44px;
-      border-radius: 50px 50px 18px 18px;
-      background: #18151b;
-      left: -7px;
-      top: -16px;
-    }
-
-    .eyes {
-      position: absolute;
-      left: 22px;
-      top: 38px;
-      width: 42px;
-      height: 9px;
-      border-radius: 30px;
-      background: radial-gradient(circle at 8px 4px, #111 0 4px, transparent 5px), radial-gradient(circle at 34px 4px, #111 0 4px, transparent 5px);
-    }
-
-    .smile {
-      position: absolute;
-      left: 30px;
-      top: 58px;
-      width: 26px;
-      height: 13px;
-      border-bottom: 4px solid #fff;
-      border-radius: 0 0 30px 30px;
-    }
-
-    .device {
-      width: 82px;
-      height: 52px;
-      border-radius: 12px;
-      background: var(--teal);
-      border: 3px solid rgba(17, 17, 17, 0.18);
-    }
-
-    .floating-note,
-    .floating-star,
-    .floating-heart {
-      position: absolute;
-      font-size: 2.2rem;
-      z-index: 3;
-      filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.14));
-      animation: floaty 4s ease-in-out infinite;
-    }
-
+    .hero { min-height: calc(100vh - 76px); padding: 86px 0 70px; position: relative; overflow: hidden; }
+    .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; background: rgba(248,217,118,0.65); z-index: 0; }
+    .hero::before { width: 440px; height: 440px; left: -190px; bottom: -100px; }
+    .hero::after { width: 360px; height: 360px; right: -130px; top: 80px; }
+    .hero .wrap { position: relative; z-index: 1; }
+    .hero-title { font-family: "Playfair Display", serif; font-size: clamp(3.6rem,8.4vw,8rem); line-height: 0.86; letter-spacing: -0.07em; margin-bottom: 14px; }
+    .hero-title .script { display: inline-block; font-size: 0.62em; color: var(--ink); letter-spacing: 0; transform: rotate(-3deg); margin-left: 8px; }
+    .hero-subtitle { font-size: clamp(1.16rem,2.2vw,1.65rem); margin: 18px 0 18px; color: var(--ink); font-weight: 600; max-width: 780px; }
+    .hero-copy { color: var(--muted); max-width: 720px; font-size: 1.06rem; margin-bottom: 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 28px; }
+    .hero-art { min-height: 480px; border-radius: 46% 54% 48% 52% / 53% 44% 56% 47%; background: var(--yellow); position: relative; box-shadow: var(--shadow); overflow: hidden; border: 8px solid rgba(255,249,236,0.8); }
+    .hero-art::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.55) 0 10%, transparent 11%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.45) 0 8%, transparent 9%), radial-gradient(circle at 65% 85%, rgba(244,123,32,0.25) 0 18%, transparent 19%); }
+    .character-card { position: absolute; width: 180px; height: 220px; background: var(--cream-2); border: 3px solid var(--ink); border-radius: 28px; box-shadow: 10px 12px 0 rgba(17,17,17,0.18); padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+    .character-card.one { left: 8%; bottom: 12%; transform: rotate(-7deg); }
+    .character-card.two { right: 8%; top: 14%; transform: rotate(7deg); }
+    .character-card.three { left: 34%; top: 31%; transform: rotate(-1deg); }
+    .face { width: 86px; height: 86px; border-radius: 50%; background: #a85f31; position: relative; margin-bottom: 16px; }
+    .face::before { content: ""; position: absolute; width: 100px; height: 44px; border-radius: 50px 50px 18px 18px; background: #18151b; left: -7px; top: -16px; }
+    .eyes { position: absolute; left: 22px; top: 38px; width: 42px; height: 9px; border-radius: 30px; background: radial-gradient(circle at 8px 4px, #111 0 4px, transparent 5px), radial-gradient(circle at 34px 4px, #111 0 4px, transparent 5px); }
+    .smile { position: absolute; left: 30px; top: 58px; width: 26px; height: 13px; border-bottom: 4px solid #fff; border-radius: 0 0 30px 30px; }
+    .device { width: 82px; height: 52px; border-radius: 12px; background: var(--teal); border: 3px solid rgba(17,17,17,0.18); }
+    .floating-note, .floating-star, .floating-heart { position: absolute; font-size: 2.2rem; z-index: 3; filter: drop-shadow(0 8px 8px rgba(0,0,0,0.14)); animation: floaty 4s ease-in-out infinite; }
     .floating-note { top: 8%; left: 20%; color: var(--orange); }
     .floating-star { bottom: 12%; right: 24%; color: var(--teal); animation-delay: 0.6s; }
     .floating-heart { top: 55%; right: 8%; color: var(--pink); animation-delay: 1.1s; }
-
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0) rotate(-3deg); }
-      50% { transform: translateY(-14px) rotate(5deg); }
-    }
-
-    .stats-strip {
-      margin-top: 34px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .stats-strip .tag {
-      background: var(--cream-2);
-      border: 1px solid rgba(17, 17, 17, 0.08);
-    }
+    @keyframes floaty { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-14px) rotate(5deg); } }
+    .stats-strip { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .stats-strip .tag { background: var(--cream-2); border: 1px solid rgba(17,17,17,0.08); }
 
     /* PROBLEM */
-    .problem-card {
-      background: #fff6a8;
-      border-radius: 24px 24px 24px 4px;
-      padding: 24px;
-      min-height: 190px;
-      position: relative;
-      box-shadow: 8px 10px 0 rgba(17, 17, 17, 0.08);
-    }
-
-    .problem-card::after {
-      content: "";
-      position: absolute;
-      bottom: -16px;
-      right: 28px;
-      border-width: 18px 18px 0 0;
-      border-style: solid;
-      border-color: #fff6a8 transparent transparent transparent;
-    }
-
-    .problem-card strong {
-      display: block;
-      font-size: 1.08rem;
-      margin-bottom: 8px;
-    }
-
-    .problem-card p {
-      color: #282414;
-    }
-
-    .problem-map {
-      min-height: 430px;
-      background: var(--cream-2);
-      border-radius: var(--radius-lg);
-      display: grid;
-      place-items: center;
-      box-shadow: var(--shadow);
-      padding: 28px;
-    }
-
-    .africa-shape {
-      width: min(320px, 70vw);
-      aspect-ratio: 0.75;
-      background:
-        linear-gradient(135deg, #f06a8c, #f8d976 30%, #7acbbd 54%, #f47b20 78%, #c5d99b);
-      clip-path: polygon(48% 0%, 65% 7%, 74% 18%, 86% 22%, 82% 37%, 94% 49%, 80% 60%, 77% 77%, 61% 92%, 48% 100%, 38% 85%, 25% 79%, 27% 65%, 15% 55%, 24% 43%, 17% 30%, 30% 18%, 38% 5%);
-      border: 10px solid rgba(255, 255, 255, 0.5);
-      box-shadow: 0 14px 40px rgba(17, 17, 17, 0.14);
-    }
+    .problem-card { background: #fff6a8; border-radius: 24px 24px 24px 4px; padding: 24px; min-height: 190px; position: relative; box-shadow: 8px 10px 0 rgba(17,17,17,0.08); }
+    .problem-card::after { content: ""; position: absolute; bottom: -16px; right: 28px; border-width: 18px 18px 0 0; border-style: solid; border-color: #fff6a8 transparent transparent transparent; }
+    .problem-card strong { display: block; font-size: 1.08rem; margin-bottom: 8px; }
+    .problem-card p { color: #282414; }
+    .problem-map { min-height: 430px; background: var(--cream-2); border-radius: var(--radius-lg); display: grid; place-items: center; box-shadow: var(--shadow); padding: 28px; }
+    .africa-shape { width: min(320px,70vw); aspect-ratio: 0.75; background: linear-gradient(135deg, #f06a8c, #f8d976 30%, #7acbbd 54%, #f47b20 78%, #c5d99b); clip-path: polygon(48% 0%, 65% 7%, 74% 18%, 86% 22%, 82% 37%, 94% 49%, 80% 60%, 77% 77%, 61% 92%, 48% 100%, 38% 85%, 25% 79%, 27% 65%, 15% 55%, 24% 43%, 17% 30%, 30% 18%, 38% 5%); border: 10px solid rgba(255,255,255,0.5); box-shadow: 0 14px 40px rgba(17,17,17,0.14); }
 
     /* SOLUTION */
-    .solution-box {
-      background: var(--sky);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .solution-box::after {
-      content: "Healing Through Play";
-      position: absolute;
-      right: -8px;
-      bottom: 8px;
-      font-family: "Caveat Brush", cursive;
-      color: rgba(17, 17, 17, 0.07);
-      font-size: clamp(3rem, 8vw, 7rem);
-      transform: rotate(-5deg);
-      white-space: nowrap;
-    }
-
-    .steps {
-      counter-reset: step;
-    }
-
-    .step-card {
-      position: relative;
-      padding-left: 78px;
-    }
-
-    .step-card::before {
-      counter-increment: step;
-      content: "0" counter(step);
-      position: absolute;
-      left: 22px;
-      top: 26px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--orange);
-      display: grid;
-      place-items: center;
-      color: var(--ink);
-      font-weight: 900;
-    }
+    .solution-box { background: var(--sky); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .solution-box::after { content: "Healing Through Play"; position: absolute; right: -8px; bottom: 8px; font-family: "Caveat Brush", cursive; color: rgba(17,17,17,0.07); font-size: clamp(3rem,8vw,7rem); transform: rotate(-5deg); white-space: nowrap; }
+    .steps { counter-reset: step; }
+    .step-card { position: relative; padding-left: 78px; }
+    .step-card::before { counter-increment: step; content: "0" counter(step); position: absolute; left: 22px; top: 26px; width: 40px; height: 40px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; color: var(--ink); font-weight: 900; }
 
     /* GAMES */
-    .game-card {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      min-height: 210px;
-    }
-
-    .age-pill {
-      width: fit-content;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(47, 105, 119, 0.12);
-      color: var(--teal);
-      font-weight: 900;
-      font-size: 0.78rem;
-    }
+    .game-card { display: flex; flex-direction: column; gap: 10px; min-height: 210px; }
+    .age-pill { width: fit-content; padding: 6px 10px; border-radius: 999px; background: rgba(47,105,119,0.12); color: var(--teal); font-weight: 900; font-size: 0.78rem; }
 
     /* MODEL */
-    .revenue-card {
-      border-left: 8px solid var(--orange);
-    }
-
-    .phase {
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 18px;
-      align-items: start;
-      margin-top: 20px;
-    }
-
-    .phase-number {
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      background: var(--yellow);
-      display: grid;
-      place-items: center;
-      font-family: "Playfair Display", serif;
-      font-size: 1.35rem;
-      font-weight: 900;
-      box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.08);
-    }
+    .revenue-card { border-left: 8px solid var(--orange); }
+    .phase { display: grid; grid-template-columns: 70px 1fr; gap: 18px; align-items: start; margin-top: 20px; }
+    .phase-number { width: 62px; height: 62px; border-radius: 50%; background: var(--yellow); display: grid; place-items: center; font-family: "Playfair Display", serif; font-size: 1.35rem; font-weight: 900; box-shadow: inset 0 -6px 0 rgba(0,0,0,0.08); }
 
     /* IMPACT */
-    .metric-card {
-      background: var(--cream-2);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      border: 1px solid rgba(17, 17, 17, 0.08);
-    }
+    .metric-card { background: var(--cream-2); border-radius: var(--radius-md); padding: 24px; border: 1px solid rgba(17,17,17,0.08); }
+    .metric-number { font-family: "Playfair Display", serif; font-size: 2.2rem; line-height: 1; color: var(--rust); margin-bottom: 8px; }
 
-    .metric-number {
-      font-family: "Playfair Display", serif;
-      font-size: 2.2rem;
-      line-height: 1;
-      color: var(--rust);
-      margin-bottom: 8px;
-    }
-
-    /* TEAM */
-    .team-card {
-      text-align: center;
-    }
-
-    .avatar {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 32% 30%, #c67a44 0 32%, #9b552e 33% 100%);
-      margin: 0 auto 16px;
-      position: relative;
-      border: 5px solid var(--yellow);
-    }
-
-    .avatar::before {
-      content: "";
-      position: absolute;
-      top: -12px;
-      left: 8px;
-      right: 8px;
-      height: 34px;
-      background: #171319;
-      border-radius: 50px 50px 24px 24px;
-    }
-
-    .avatar::after {
-      content: "☺";
-      position: absolute;
-      inset: 14px 0 0;
-      display: grid;
-      place-items: center;
-      color: white;
-      font-size: 2rem;
-    }
+    /* TEAM — real photos */
+    .team-card { text-align: center; }
+    .team-photo { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; object-position: top center; border: 5px solid var(--yellow); margin: 0 auto 16px; display: block; box-shadow: 0 8px 24px rgba(17,17,17,0.14); }
 
     /* CTA + FOOTER */
-    .cta {
-      background: var(--ink);
-      color: var(--cream-2);
-      text-align: center;
-      padding: 90px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta::before,
-    .cta::after {
-      content: "✦";
-      position: absolute;
-      font-size: 6rem;
-      color: rgba(248, 217, 118, 0.16);
-    }
-
+    .cta { background: var(--ink); color: var(--cream-2); text-align: center; padding: 90px 0; position: relative; overflow: hidden; }
+    .cta::before, .cta::after { content: "✦"; position: absolute; font-size: 6rem; color: rgba(248,217,118,0.16); }
     .cta::before { left: 8%; top: 22%; }
     .cta::after { right: 10%; bottom: 12%; }
-
-    .cta h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(2.2rem, 5vw, 4.6rem);
-      line-height: 1;
-      max-width: 860px;
-      margin: 0 auto 18px;
-      letter-spacing: -0.04em;
-    }
-
-    .cta p {
-      max-width: 680px;
-      margin: 0 auto 30px;
-      color: rgba(255, 249, 236, 0.74);
-      font-size: 1.06rem;
-    }
-
-    footer {
-      background: var(--ink);
-      color: rgba(255, 249, 236, 0.68);
-      border-top: 1px solid rgba(255, 249, 236, 0.12);
-      padding: 34px 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    footer .brand-name span:first-child,
-    footer .brand-name span:last-child {
-      color: var(--cream-2);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      font-size: 0.92rem;
-      font-weight: 700;
-    }
-
-    .footer-links a:hover {
-      color: var(--yellow);
-    }
-
-    .copyright {
-      margin-top: 24px;
-      font-size: 0.85rem;
-      color: rgba(255, 249, 236, 0.44);
-    }
+    .cta h2 { font-family: "Playfair Display", serif; font-size: clamp(2.2rem,5vw,4.6rem); line-height: 1; max-width: 860px; margin: 0 auto 18px; letter-spacing: -0.04em; }
+    .cta p { max-width: 680px; margin: 0 auto 30px; color: rgba(255,249,236,0.74); font-size: 1.06rem; }
+    footer { background: var(--ink); color: rgba(255,249,236,0.68); border-top: 1px solid rgba(255,249,236,0.12); padding: 34px 0; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; align-items: center; flex-wrap: wrap; }
+    footer .brand-name span:first-child, footer .brand-name span:last-child { color: var(--cream-2); }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.92rem; font-weight: 700; }
+    .footer-links a:hover { color: var(--yellow); }
+    .copyright { margin-top: 24px; font-size: 0.85rem; color: rgba(255,249,236,0.44); }
 
     /* RESPONSIVE */
     @media (max-width: 980px) {
-      .two-col {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-art {
-        min-height: 380px;
-        max-width: 620px;
-        margin: 0 auto;
-      }
-
-      .grid-4 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .grid-3 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .nav-links {
-        position: absolute;
-        top: 76px;
-        left: 20px;
-        right: 20px;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        background: var(--cream-2);
-        border: 1px solid rgba(17, 17, 17, 0.1);
-        border-radius: 22px;
-        box-shadow: var(--shadow);
-        padding: 20px;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        width: 100%;
-      }
-
-      .nav-links .btn {
-        width: 100%;
-      }
-
-      .menu-btn {
-        display: inline-flex;
-      }
+      .two-col { grid-template-columns: 1fr; }
+      .hero-art { min-height: 380px; max-width: 620px; margin: 0 auto; }
+      .grid-4 { grid-template-columns: repeat(2,1fr); }
+      .grid-3 { grid-template-columns: repeat(2,1fr); }
+      .nav-links { position: absolute; top: 76px; left: 20px; right: 20px; display: none; flex-direction: column; align-items: stretch; background: var(--cream-2); border: 1px solid rgba(17,17,17,0.1); border-radius: 22px; box-shadow: var(--shadow); padding: 20px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { width: 100%; }
+      .nav-links .btn { width: 100%; }
+      .menu-btn { display: inline-flex; }
     }
-
     @media (max-width: 680px) {
-      .wrap {
-        width: min(100% - 28px, var(--max-width));
-      }
-
-      .section {
-        padding: 64px 0;
-      }
-
-      .nav-inner {
-        height: 70px;
-      }
-
-      .logo-img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      border-radius: 10px;
-      flex-shrink: 0;
+      .wrap { width: min(100% - 28px, var(--max-width)); }
+      .section { padding: 64px 0; }
+      .nav-inner { height: 70px; }
+      .brand-mark { width: 36px; height: 36px; }
+      .brand-name span:first-child { font-size: 0.9rem; }
+      .brand-name span:last-child { font-size: 0.98rem; }
+      .nav-links { top: 70px; }
+      .hero { padding: 58px 0 48px; min-height: auto; }
+      .hero-title { font-size: clamp(3rem,15vw,4.8rem); }
+      .hero-title .script { display: block; margin-left: 0; margin-top: 8px; }
+      .hero-actions, .stats-strip { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .solution-box { padding: 28px; }
+      .step-card { padding-left: 26px; padding-top: 76px; }
+      .step-card::before { top: 24px; left: 24px; }
+      .character-card { width: 142px; height: 188px; }
+      .character-card.three { left: 25%; top: 30%; }
+      .character-card.one { left: 3%; }
+      .character-card.two { right: 3%; }
+      .face { width: 68px; height: 68px; }
+      .face::before { width: 82px; height: 36px; }
+      .eyes { left: 17px; top: 31px; width: 35px; }
+      .smile { left: 23px; top: 47px; }
+      .device { width: 68px; height: 44px; }
     }
-
-    .lang-switcher {
-      border-radius: 10px;
-      padding: 8px 10px;
-      border: 1px solid rgba(17, 17, 17, 0.15);
-      font: inherit;
-      font-size: 0.88rem;
-      font-weight: 700;
-      background: var(--white);
-      color: var(--ink);
-      cursor: pointer;
-    }
-
-    .brand-mark {
-        width: 36px;
-        height: 36px;
-      }
-
-      .brand-name span:first-child {
-        font-size: 0.9rem;
-      }
-
-      .brand-name span:last-child {
-        font-size: 0.98rem;
-      }
-
-      .nav-links {
-        top: 70px;
-      }
-
-      .hero {
-        padding: 58px 0 48px;
-        min-height: auto;
-      }
-
-      .hero-title {
-        font-size: clamp(3rem, 15vw, 4.8rem);
-      }
-
-      .hero-title .script {
-        display: block;
-        margin-left: 0;
-        margin-top: 8px;
-      }
-
-      .hero-actions,
-      .stats-strip {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .grid-2,
-      .grid-3,
-      .grid-4 {
-        grid-template-columns: 1fr;
-      }
-
-      .solution-box {
-        padding: 28px;
-      }
-
-      .step-card {
-        padding-left: 26px;
-        padding-top: 76px;
-      }
-
-      .step-card::before {
-        top: 24px;
-        left: 24px;
-      }
-
-      .character-card {
-        width: 142px;
-        height: 188px;
-      }
-
-      .character-card.three {
-        left: 25%;
-        top: 30%;
-      }
-
-      .character-card.one {
-        left: 3%;
-      }
-
-      .character-card.two {
-        right: 3%;
-      }
-
-      .face {
-        width: 68px;
-        height: 68px;
-      }
-
-      .face::before {
-        width: 82px;
-        height: 36px;
-      }
-
-      .eyes {
-        left: 17px;
-        top: 31px;
-        width: 35px;
-      }
-
-      .smile {
-        left: 23px;
-        top: 47px;
-      }
-
-      .device {
-        width: 68px;
-        height: 44px;
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
 <body>
+
   <nav class="nav" aria-label="Primary navigation">
     <div class="wrap nav-inner">
       <a class="brand" href="#top" aria-label="Cheza 4 Afya Akili home">
-        <img src="cheza logo.jpeg" alt="Cheza 4 Afya Akili logo" class="logo-img">
+        <img src="cheza logo.jpeg" alt="Cheza 4 Afya Akili logo" class="logo-img"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="brand-mark" style="display:none;" aria-hidden="true"></span>
         <span class="brand-name">
           <span>CHEZA 4</span>
           <span>Afya Akili</span>
@@ -1096,39 +229,38 @@
           <option value="sw">🇹🇿 Kiswahili</option>
           <option value="rw">🇷🇼 Kinyarwanda</option>
         </select>
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
-        <a href="#games">Games</a>
-        <a href="#model">Model</a>
-        <a href="#impact">Impact</a>
-        <a href="#team">Team</a>
-        <a class="btn btn-primary" href="https://forms.gle/VUsFSAW7BvtLRp748" target="_blank" rel="noopener">Join Waitlist</a>
+        <a href="#problem" data-i18n="nav_problem">Problem</a>
+        <a href="#solution" data-i18n="nav_solution">Solution</a>
+        <a href="#games" data-i18n="nav_games">Games</a>
+        <a href="#model" data-i18n="nav_model">Model</a>
+        <a href="#impact" data-i18n="nav_impact">Impact</a>
+        <a href="#team" data-i18n="nav_team">Team</a>
+        <a class="btn btn-primary" href="https://forms.gle/VUsFSAW7BvtLRp748" target="_blank" rel="noopener" data-i18n="btn_waitlist">Join Waitlist</a>
       </div>
     </div>
   </nav>
 
   <main id="top">
+
+    <!-- HERO -->
     <header class="hero">
       <div class="wrap two-col">
         <div>
-          <span class="eyebrow">AI-powered youth wellness</span>
+          <span class="eyebrow" data-i18n="hero_eyebrow">AI-powered youth wellness</span>
           <h1 class="hero-title">CHEZA 4 <span class="script">Afya Akili</span></h1>
           <div class="red-line" aria-hidden="true"></div>
           <p class="hero-subtitle" data-i18n="hero_subtitle">Healing Through Play — mental wellness for African children and adolescents.</p>
           <p class="hero-copy" data-i18n="hero_copy">Cheza 4 Afya Akili combines games, African storytelling, emotional check-ins, and AI personalization to help young people build resilience in a safe, engaging, and culturally relevant way.</p>
-
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://forms.gle/VUsFSAW7BvtLRp748" target="_blank" rel="noopener">Join the Waitlist</a>
-            <a class="btn btn-secondary" href="#solution">See How It Works</a>
-            <a class="btn btn-secondary" href="#" aria-label="Watch demo video">Watch Demo</a>
+            <a class="btn btn-primary" href="https://forms.gle/VUsFSAW7BvtLRp748" target="_blank" rel="noopener" data-i18n="btn_waitlist_long">Join the Waitlist</a>
+            <a class="btn btn-secondary" href="#solution" data-i18n="btn_how">See How It Works</a>
           </div>
-
           <div class="stats-strip" aria-label="Target launch countries">
             <span class="tag">🇰🇪 Kenya</span>
             <span class="tag">🇹🇿 Tanzania</span>
             <span class="tag">🇷🇼 Rwanda</span>
-            <span class="tag">Ages 6–19</span>
-            <span class="tag">English · Kiswahili · Kinyarwanda</span>
+            <span class="tag" data-i18n="tag_ages">Ages 6–19</span>
+            <span class="tag" data-i18n="tag_langs">English · Kiswahili · Kinyarwanda</span>
           </div>
         </div>
 
@@ -1136,7 +268,6 @@
           <span class="floating-note" aria-hidden="true">♫</span>
           <span class="floating-star" aria-hidden="true">✶</span>
           <span class="floating-heart" aria-hidden="true">💗</span>
-
           <div class="character-card one" aria-hidden="true">
             <div class="face"><span class="eyes"></span><span class="smile"></span></div>
             <div class="device"></div>
@@ -1153,13 +284,14 @@
       </div>
     </header>
 
+    <!-- PROBLEM -->
     <section class="section" id="problem">
       <div class="wrap two-col">
         <div>
-          <span class="eyebrow">The problem</span>
-          <h2 class="section-title">Youth need support before crisis point.</h2>
+          <span class="eyebrow" data-i18n="problem_eyebrow">The problem</span>
+          <h2 class="section-title" data-i18n="problem_title">Youth need support before crisis point.</h2>
           <div class="red-line" aria-hidden="true"></div>
-          <p class="lead">Many children and adolescents face emotional stress, anxiety, stigma, and limited access to youth-friendly mental health support. Cheza 4 Afya Akili is designed to make early support more accessible through play.</p>
+          <p class="lead" data-i18n="problem_lead">Many children and adolescents face emotional stress, anxiety, stigma, and limited access to youth-friendly mental health support. Cheza 4 Afya Akili is designed to make early support more accessible through play.</p>
         </div>
         <div class="problem-map" aria-hidden="true">
           <div class="africa-shape"></div>
@@ -1169,243 +301,270 @@
       <div class="wrap" style="margin-top: 34px;">
         <div class="grid-4">
           <article class="problem-card">
-            <strong>Rising mental health crisis</strong>
-            <p>Young people increasingly face anxiety, depression, stress, and substance-abuse risks.</p>
+            <strong data-i18n="p1_h">Rising mental health crisis</strong>
+            <p data-i18n="p1_p">Young people increasingly face anxiety, depression, stress, and substance-abuse risks.</p>
           </article>
           <article class="problem-card">
-            <strong>Limited youth-friendly support</strong>
-            <p>Support services can be costly, stigmatized, hard to access, and not designed for children.</p>
+            <strong data-i18n="p2_h">Limited youth-friendly support</strong>
+            <p data-i18n="p2_p">Support services can be costly, stigmatized, hard to access, and not designed for children.</p>
           </article>
           <article class="problem-card">
-            <strong>Gaps in early detection</strong>
-            <p>Many young people receive help only when problems have already become serious.</p>
+            <strong data-i18n="p3_h">Gaps in early detection</strong>
+            <p data-i18n="p3_p">Many young people receive help only when problems have already become serious.</p>
           </article>
           <article class="problem-card">
-            <strong>Digital and cultural gaps</strong>
-            <p>Many tools are not built around African youth realities, languages, stories, and communities.</p>
+            <strong data-i18n="p4_h">Digital and cultural gaps</strong>
+            <p data-i18n="p4_p">Many tools are not built around African youth realities, languages, stories, and communities.</p>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- SOLUTION -->
     <section class="section alt" id="solution">
       <div class="wrap">
         <div class="solution-box">
-          <span class="eyebrow">The solution</span>
-          <h2 class="section-title">A gamified wellness platform built for African children and adolescents.</h2>
+          <span class="eyebrow" data-i18n="sol_eyebrow">The solution</span>
+          <h2 class="section-title" data-i18n="sol_title">A gamified wellness platform built for African children and adolescents.</h2>
           <div class="red-line" aria-hidden="true"></div>
-          <p class="lead">Cheza 4 Afya Akili uses play, storytelling, AI, and emotional learning to make healing accessible, engaging, and culturally relevant. Instead of waiting for crisis, the platform helps young users check in, express emotions, learn coping skills, and grow over time.</p>
+          <p class="lead" data-i18n="sol_lead">Cheza 4 Afya Akili uses play, storytelling, AI, and emotional learning to make healing accessible, engaging, and culturally relevant. Instead of waiting for crisis, the platform helps young users check in, express emotions, learn coping skills, and grow over time.</p>
         </div>
       </div>
 
       <div class="wrap" style="margin-top: 36px;">
         <div class="grid-4 steps">
           <article class="card step-card">
-            <h3>Check-in</h3>
-            <p>Daily emotional mood tracking using text, voice, icons, and child-friendly prompts.</p>
+            <h3 data-i18n="step1_h">Check-in</h3>
+            <p data-i18n="step1_p">Daily emotional mood tracking using text, voice, icons, and child-friendly prompts.</p>
           </article>
           <article class="card step-card">
-            <h3>AI personalization</h3>
-            <p>Content adapts based on emotional state, learning pace, and user needs.</p>
+            <h3 data-i18n="step2_h">AI personalization</h3>
+            <p data-i18n="step2_p">Content adapts based on emotional state, learning pace, and user needs.</p>
           </article>
           <article class="card step-card">
-            <h3>Play-based healing</h3>
-            <p>Games, stories, quests, and challenges turn emotional learning into adventure.</p>
+            <h3 data-i18n="step3_h">Play-based healing</h3>
+            <p data-i18n="step3_p">Games, stories, quests, and challenges turn emotional learning into adventure.</p>
           </article>
           <article class="card step-card">
-            <h3>Growth pathways</h3>
-            <p>Users unlock coping skills, mentorship routes, and development opportunities.</p>
+            <h3 data-i18n="step4_h">Growth pathways</h3>
+            <p data-i18n="step4_p">Users unlock coping skills, mentorship routes, and development opportunities.</p>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- GAMES -->
     <section class="section" id="games">
       <div class="wrap">
-        <span class="eyebrow">Games</span>
-        <h2 class="section-title">Play-based healing adventures for young minds.</h2>
+        <span class="eyebrow" data-i18n="games_eyebrow">Games</span>
+        <h2 class="section-title" data-i18n="games_title">Play-based healing adventures for young minds.</h2>
         <div class="red-line" aria-hidden="true"></div>
-        <p class="lead">The platform separates content for children and adolescents so that each age group receives support in a way that feels natural, safe, and age-appropriate.</p>
+        <p class="lead" data-i18n="games_lead">The platform separates content for children and adolescents so each age group receives support in a way that feels natural, safe, and age-appropriate.</p>
 
         <div class="grid-3" style="margin-top: 36px;">
           <article class="card game-card">
-            <span class="icon-bubble">💛</span>
-            <span class="age-pill">Children 6–12</span>
-            <h3>Emotion Explorer Adventures</h3>
-            <p>Children learn feelings through characters and simple stories that build emotional literacy.</p>
+            <div class="icon-bubble">💛</div>
+            <span class="age-pill" data-i18n="age_children">Children 6–12</span>
+            <h3 data-i18n="g1_h">Emotion Explorer Adventures</h3>
+            <p data-i18n="g1_p">Children learn feelings through characters and simple stories that build emotional literacy.</p>
           </article>
           <article class="card game-card">
-            <span class="icon-bubble">🌬️</span>
-            <span class="age-pill">Children 6–12</span>
-            <h3>Calm Down Quests</h3>
-            <p>Breathing and calming mini-games help children manage worry and anxiety.</p>
+            <div class="icon-bubble">🌬️</div>
+            <span class="age-pill" data-i18n="age_children">Children 6–12</span>
+            <h3 data-i18n="g2_h">Calm Down Quests</h3>
+            <p data-i18n="g2_p">Breathing and calming mini-games help children manage worry and anxiety.</p>
           </article>
           <article class="card game-card">
-            <span class="icon-bubble">🏫</span>
-            <span class="age-pill">Children 6–12</span>
-            <h3>School Life Missions</h3>
-            <p>Safe scenario games help children practice decisions around school, friendship, and bullying.</p>
+            <div class="icon-bubble">🏫</div>
+            <span class="age-pill" data-i18n="age_children">Children 6–12</span>
+            <h3 data-i18n="g3_h">School Life Missions</h3>
+            <p data-i18n="g3_p">Safe scenario games help children practice decisions around school, friendship, and bullying.</p>
           </article>
           <article class="card game-card">
-            <span class="icon-bubble">🎙️</span>
-            <span class="age-pill">All users</span>
-            <h3>Safe Voice Stories</h3>
-            <p>AI turns feelings into stories, helping users express emotions when words are difficult.</p>
+            <div class="icon-bubble">🎙️</div>
+            <span class="age-pill" data-i18n="age_all">All users</span>
+            <h3 data-i18n="g4_h">Safe Voice Stories</h3>
+            <p data-i18n="g4_p">AI turns feelings into stories, helping users express emotions when words are difficult.</p>
           </article>
           <article class="card game-card">
-            <span class="icon-bubble">🧭</span>
-            <span class="age-pill">Teens 13–19</span>
-            <h3>Identity Quest Lines</h3>
-            <p>Life storytelling journeys help adolescents explore self-worth and personal identity.</p>
+            <div class="icon-bubble">🧭</div>
+            <span class="age-pill" data-i18n="age_teens">Teens 13–19</span>
+            <h3 data-i18n="g5_h">Identity Quest Lines</h3>
+            <p data-i18n="g5_p">Life storytelling journeys help adolescents explore self-worth and personal identity.</p>
           </article>
           <article class="card game-card">
-            <span class="icon-bubble">🤝</span>
-            <span class="age-pill">Teens 13–19</span>
-            <h3>Peer Healing Circles</h3>
-            <p>Anonymous group healing missions reduce isolation and encourage healthy peer support.</p>
+            <div class="icon-bubble">🤝</div>
+            <span class="age-pill" data-i18n="age_teens">Teens 13–19</span>
+            <h3 data-i18n="g6_h">Peer Healing Circles</h3>
+            <p data-i18n="g6_p">Anonymous group healing missions reduce isolation and encourage healthy peer support.</p>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- WHY -->
     <section class="section dark" id="why">
       <div class="wrap two-col">
         <div>
-          <span class="eyebrow">Why Cheza 4 Afya Akili</span>
-          <h2 class="section-title">Built FOR Africa, not imported to Africa.</h2>
+          <span class="eyebrow" data-i18n="why_eyebrow">Why Cheza 4 Afya Akili</span>
+          <h2 class="section-title" data-i18n="why_title">Built FOR Africa, not imported to Africa.</h2>
           <div class="red-line" aria-hidden="true"></div>
-          <p class="lead">The platform is rooted in African culture, local languages, oral storytelling, community healing, and real-life situations children face at home, school, and in friendships.</p>
+          <p class="lead" data-i18n="why_lead">The platform is rooted in African culture, local languages, oral storytelling, community healing, and real-life situations children face at home, school, and in friendships.</p>
         </div>
         <div class="grid-2">
-          <article class="card"><h3>African storytelling</h3><p>Stories and characters are designed around local culture and lived realities.</p></article>
-          <article class="card"><h3>Local languages</h3><p>Designed for Swahili, Sheng, Kinyarwanda, and future African languages.</p></article>
-          <article class="card"><h3>Community healing</h3><p>Peer quests and group missions reflect the importance of community support.</p></article>
-          <article class="card"><h3>Mobile-first access</h3><p>Built to scale digitally across schools, homes, NGOs, and youth programs.</p></article>
+          <article class="card"><h3 data-i18n="w1_h">African storytelling</h3><p data-i18n="w1_p">Stories and characters are designed around local culture and lived realities.</p></article>
+          <article class="card"><h3 data-i18n="w2_h">Local languages</h3><p data-i18n="w2_p">Designed for Swahili, Sheng, Kinyarwanda, and future African languages.</p></article>
+          <article class="card"><h3 data-i18n="w3_h">Community healing</h3><p data-i18n="w3_p">Peer quests and group missions reflect the importance of community support.</p></article>
+          <article class="card"><h3 data-i18n="w4_h">Mobile-first access</h3><p data-i18n="w4_p">Built to scale digitally across schools, homes, NGOs, and youth programs.</p></article>
         </div>
       </div>
     </section>
 
+    <!-- MODEL -->
     <section class="section" id="model">
       <div class="wrap">
-        <span class="eyebrow">Business model</span>
-        <h2 class="section-title">Sustainable revenue while keeping core access free.</h2>
+        <span class="eyebrow" data-i18n="model_eyebrow">Business model</span>
+        <h2 class="section-title" data-i18n="model_title">Sustainable revenue while keeping core access free.</h2>
         <div class="red-line" aria-hidden="true"></div>
-        <p class="lead">Cheza 4 Afya Akili can serve children freely at the basic level while generating revenue through premium features, schools, NGOs, and government-supported youth programs.</p>
+        <p class="lead" data-i18n="model_lead">Cheza 4 Afya Akili can serve children freely at the basic level while generating revenue through premium features, schools, NGOs, and government-supported youth programs.</p>
 
         <div class="grid-4" style="margin-top: 36px;">
-          <article class="card revenue-card"><h3>Freemium</h3><p>Basic games and emotional check-ins remain free for youth.</p></article>
-          <article class="card revenue-card"><h3>Premium</h3><p>AI coaching, parent insights, and extended progress features.</p></article>
-          <article class="card revenue-card"><h3>Schools</h3><p>Curriculum support, dashboards, classroom programs, and reporting.</p></article>
-          <article class="card revenue-card"><h3>NGOs/Governments</h3><p>Youth access programs for wider community and public-health reach.</p></article>
+          <article class="card revenue-card"><h3 data-i18n="m1_h">Freemium</h3><p data-i18n="m1_p">Basic games and emotional check-ins remain free for youth.</p></article>
+          <article class="card revenue-card"><h3 data-i18n="m2_h">Premium</h3><p data-i18n="m2_p">AI coaching, parent insights, and extended progress features.</p></article>
+          <article class="card revenue-card"><h3 data-i18n="m3_h">Schools</h3><p data-i18n="m3_p">Curriculum support, dashboards, classroom programs, and reporting.</p></article>
+          <article class="card revenue-card"><h3 data-i18n="m4_h">NGOs / Governments</h3><p data-i18n="m4_p">Youth access programs for wider community and public-health reach.</p></article>
         </div>
       </div>
     </section>
 
+    <!-- SCALABILITY -->
     <section class="section alt" id="scalability">
       <div class="wrap two-col">
         <div>
-          <span class="eyebrow">Scalability</span>
-          <h2 class="section-title">From East Africa to the Global South.</h2>
+          <span class="eyebrow" data-i18n="scale_eyebrow">Scalability</span>
+          <h2 class="section-title" data-i18n="scale_title">From East Africa to the Global South.</h2>
           <div class="red-line" aria-hidden="true"></div>
-          <p class="lead">The first phase focuses on Kenya, Tanzania, and Rwanda. The next phases expand across Africa and later to other Global South regions where culturally relevant youth mental wellness tools are needed.</p>
+          <p class="lead" data-i18n="scale_lead">The first phase focuses on Kenya, Tanzania, and Rwanda. The next phases expand across Africa and later to other Global South regions where culturally relevant youth mental wellness tools are needed.</p>
         </div>
         <div>
           <div class="phase">
             <div class="phase-number">1</div>
-            <div><h3>Kenya, Tanzania, Rwanda</h3><p>Build the foundation in East Africa.</p></div>
+            <div><h3 data-i18n="ph1_h">Kenya, Tanzania, Rwanda</h3><p data-i18n="ph1_p">Build the foundation in East Africa.</p></div>
           </div>
           <div class="phase">
             <div class="phase-number">2</div>
-            <div><h3>East + West Africa</h3><p>Reach more communities across the continent.</p></div>
+            <div><h3 data-i18n="ph2_h">East + West Africa</h3><p data-i18n="ph2_p">Reach more communities across the continent.</p></div>
           </div>
           <div class="phase">
             <div class="phase-number">3</div>
-            <div><h3>Global South</h3><p>Take healing through play to India, Latin America, and beyond.</p></div>
+            <div><h3 data-i18n="ph3_h">Global South</h3><p data-i18n="ph3_p">Take healing through play to India, Latin America, and beyond.</p></div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- IMPACT -->
     <section class="section" id="impact">
       <div class="wrap">
-        <span class="eyebrow">Impact metrics</span>
-        <h2 class="section-title">How success will be measured.</h2>
+        <span class="eyebrow" data-i18n="impact_eyebrow">Impact metrics</span>
+        <h2 class="section-title" data-i18n="impact_title">How success will be measured.</h2>
         <div class="red-line" aria-hidden="true"></div>
-        <p class="lead">The platform will measure emotional resilience, anxiety reduction, engagement, help-seeking behavior, opportunity access, and cross-border collaboration.</p>
+        <p class="lead" data-i18n="impact_lead">The platform will measure emotional resilience, anxiety reduction, engagement, help-seeking behavior, opportunity access, and cross-border collaboration.</p>
 
         <div class="grid-3" style="margin-top: 36px;">
-          <article class="metric-card"><div class="metric-number">400</div><h3>Students per country</h3><p>Initial reach across Tanzania, Kenya, and Rwanda.</p></article>
-          <article class="metric-card"><div class="metric-number">6</div><h3>Short-term schools</h3><p>Early pilots with schools and youth-support partners.</p></article>
-          <article class="metric-card"><div class="metric-number">1M+</div><h3>Long-term children</h3><p>Future target reach across Africa.</p></article>
-          <article class="metric-card"><div class="metric-number">20k</div><h3>Long-term schools</h3><p>Potential school network expansion over time.</p></article>
-          <article class="metric-card"><div class="metric-number">50k+</div><h3>Future jobs</h3><p>Long-term opportunity creation across the youth-wellness ecosystem.</p></article>
-          <article class="metric-card"><div class="metric-number">3</div><h3>Launch countries</h3><p>A shared mental-health platform across Rwanda, Kenya, and Tanzania.</p></article>
+          <article class="metric-card"><div class="metric-number">400</div><h3 data-i18n="i1_h">Students per country</h3><p data-i18n="i1_p">Initial reach across Tanzania, Kenya, and Rwanda.</p></article>
+          <article class="metric-card"><div class="metric-number">6</div><h3 data-i18n="i2_h">Short-term schools</h3><p data-i18n="i2_p">Early pilots with schools and youth-support partners.</p></article>
+          <article class="metric-card"><div class="metric-number">1M+</div><h3 data-i18n="i3_h">Long-term children</h3><p data-i18n="i3_p">Future target reach across Africa.</p></article>
+          <article class="metric-card"><div class="metric-number">20k</div><h3 data-i18n="i4_h">Long-term schools</h3><p data-i18n="i4_p">Potential school network expansion over time.</p></article>
+          <article class="metric-card"><div class="metric-number">50k+</div><h3 data-i18n="i5_h">Future jobs</h3><p data-i18n="i5_p">Long-term opportunity creation across the youth-wellness ecosystem.</p></article>
+          <article class="metric-card"><div class="metric-number">3</div><h3 data-i18n="i6_h">Launch countries</h3><p data-i18n="i6_p">A shared mental-health platform across Rwanda, Kenya, and Tanzania.</p></article>
         </div>
       </div>
     </section>
 
+    <!-- TEAM — real photos -->
     <section class="section alt" id="team">
       <div class="wrap">
-        <span class="eyebrow">Meet the team</span>
-        <h2 class="section-title">The people building Cheza 4 Afya Akili.</h2>
+        <span class="eyebrow" data-i18n="team_eyebrow">Meet the team</span>
+        <h2 class="section-title" data-i18n="team_title">The people building Cheza 4 Afya Akili.</h2>
         <div class="red-line" aria-hidden="true"></div>
-        <p class="lead">A multidisciplinary team combining product, mental-health programming, and technology expertise.</p>
+        <p class="lead" data-i18n="team_lead">A multidisciplinary team combining product, mental-health programming, and technology expertise.</p>
 
         <div class="grid-4" style="margin-top: 36px;">
-          <article class="card team-card"><div class="avatar"></div><h3>Monalisa Keghocha</h3><p>Co-Founder </p></article>
-          <article class="card team-card"><div class="avatar"></div><h3>Beryl Mungai</h3><p>Co-Founder</p></article>
-          <article class="card team-card"><div class="avatar"></div><h3>African Iryivuze</h3><p>Co-Founder &amp; Technology Lead</p></article>
+          <article class="card team-card">
+            <img src="Monalisa Keghocha.jpg" alt="Monalisa Keghocha" class="team-photo"
+                 onerror="this.style.background='var(--yellow)'; this.style.display='block';">
+            <h3>Monalisa Keghocha</h3>
+            <p data-i18n="role_cofounder">Co-Founder</p>
+            <p>🇹🇿</p>
+          </article>
+          <article class="card team-card">
+            <img src="Beryl Mungai.jpg" alt="Beryl Mungai" class="team-photo"
+                 onerror="this.style.background='var(--yellow)'; this.style.display='block';">
+            <h3>Beryl Mungai</h3>
+            <p data-i18n="role_cofounder">Co-Founder</p>
+            <p>🇰🇪</p>
+          </article>
+          <article class="card team-card">
+            <img src="African Iryivuze.jpg" alt="African Iryivuze" class="team-photo"
+                 onerror="this.style.background='var(--yellow)'; this.style.display='block';">
+            <h3>African Iryivuze</h3>
+            <p data-i18n="role_tech">Co-Founder &amp; Technology Lead</p>
+            <p>🇷🇼</p>
+          </article>
         </div>
       </div>
     </section>
 
+    <!-- CTA -->
     <section class="cta" id="get-involved">
       <div class="wrap">
-        <h2>Help build the future of youth mental health in Africa.</h2>
-        <p>Join the waitlist, request early access, or contact the team for school, NGO, government, and funding partnerships.</p>
+        <h2 data-i18n="cta_h2">Help build the future of youth mental health in Africa.</h2>
+        <p data-i18n="cta_p">Join the waitlist, request early access, or contact the team for school, NGO, government, and funding partnerships.</p>
         <div class="hero-actions" style="justify-content: center;">
-          <a class="btn btn-primary" href="https://forms.gle/VUsFSAW7BvtLRp748" target="_blank" rel="noopener">Join the Waitlist</a>
-          <!-- <a class="btn btn-light" href="https://forms.gle/VUsFSAW7BvtLRp748" target="_blank" rel="noopener">Request Early Access</a> -->
-          <a class="btn btn-light" href="https://mail.google.com/mail/?view=cm&fs=1&to=afyaakilicheza@gmail.com&su=Partnership%20Inquiry%20-%20Cheza%204%20Afya%20Akili" target="_blank" rel="noopener">Email Our Team</a>
+          <a class="btn btn-primary" href="https://forms.gle/VUsFSAW7BvtLRp748" target="_blank" rel="noopener" data-i18n="btn_waitlist_long">Join the Waitlist</a>
+          <a class="btn btn-light" href="https://mail.google.com/mail/?view=cm&fs=1&to=afyaakilicheza@gmail.com&su=Partnership%20Inquiry%20-%20Cheza%204%20Afya%20Akili" target="_blank" rel="noopener" data-i18n="btn_email">Email Our Team</a>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer>
     <div class="wrap">
       <div class="footer-inner">
         <a class="brand" href="#top" aria-label="Cheza 4 Afya Akili home">
-          <img src="cheza logo.jpeg" alt="Cheza 4 Afya Akili Logo" class="logo-img">
+          <img src="cheza logo.jpeg" alt="Cheza 4 Afya Akili Logo" class="logo-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <span class="brand-mark" style="display:none;" aria-hidden="true"></span>
           <span class="brand-name">
             <span>CHEZA 4</span>
             <span>Afya Akili</span>
           </span>
         </a>
         <div class="footer-links">
-          <a href="#problem">Problem</a>
-          <a href="#solution">Solution</a>
-          <a href="#games">Games</a>
-          <a href="#model">Model</a>
-          <a href="#impact">Impact</a>
-          <a href="#team">Team</a>
+          <a href="#problem" data-i18n="nav_problem">Problem</a>
+          <a href="#solution" data-i18n="nav_solution">Solution</a>
+          <a href="#games" data-i18n="nav_games">Games</a>
+          <a href="#model" data-i18n="nav_model">Model</a>
+          <a href="#impact" data-i18n="nav_impact">Impact</a>
+          <a href="#team" data-i18n="nav_team">Team</a>
         </div>
       </div>
-      <p class="copyright">© 2026 Cheza 4 Afya Akili. Cheza. Play. Heal. Grow.</p>
+      <p class="copyright" data-i18n="footer_copy">© 2026 Cheza 4 Afya Akili. Cheza. Play. Heal. Grow.</p>
     </div>
   </footer>
 
   <script>
+    /* ---- MENU TOGGLE ---- */
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-
     menuBtn.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('open');
       menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       menuBtn.textContent = isOpen ? '✕' : '☰';
     });
-
-    document.querySelectorAll('#navLinks a').forEach((link) => {
+    document.querySelectorAll('#navLinks a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('open');
         menuBtn.setAttribute('aria-expanded', 'false');
@@ -1413,79 +572,232 @@
       });
     });
 
-
-    // Translate all visible page text. Each English phrase below is matched wherever it appears.
-    const pageTranslations = {
-      sw: {
-        "Problem":"Tatizo","Solution":"Suluhisho","Games":"Michezo","Model":"Mfumo","Impact":"Matokeo","Team":"Timu",
-        "Join Waitlist":"Jiunge na Orodha ya Kusubiri","Join the Waitlist":"Jiunge na Orodha ya Kusubiri","See How It Works":"Tazama Jinsi Inavyofanya Kazi","Watch Demo":"Tazama Onyesho",
-        "The problem":"Tatizo","Youth need support before crisis point.":"Vijana wanahitaji msaada kabla ya kufikia hatua ya mgogoro.",
-        "The solution":"Suluhisho","A gamified wellness platform built for African children and adolescents.":"Jukwaa la ustawi lenye michezo lililoundwa kwa watoto na vijana wa Afrika.",
-        "Games":"Michezo","Play-based healing adventures for young minds.":"Matukio ya uponyaji kupitia mchezo kwa akili changa.",
-        "Why Cheza 4 Afya Akili":"Kwa nini Cheza 4 Afya Akili","Built FOR Africa, not imported to Africa.":"Imeundwa KWA Afrika, si kuletwa tu Afrika.",
-        "Business model":"Mfumo wa biashara","Sustainable revenue while keeping core access free.":"Mapato endelevu huku huduma za msingi zikibaki bure.",
-        "Scalability":"Uwezo wa kupanuka","From East Africa to the Global South.":"Kutoka Afrika Mashariki hadi Kusini mwa Dunia.",
-        "Impact metrics":"Vipimo vya matokeo","How success will be measured.":"Jinsi mafanikio yatakavyopimwa.",
-        "Meet the team":"Kutana na timu","The people building Cheza 4 Afya Akili.":"Watu wanaojenga Cheza 4 Afya Akili.",
-        "Help build the future of youth mental health in Africa.":"Saidia kujenga mustakabali wa afya ya akili ya vijana barani Afrika.",
-        "Request Early Access":"Omba Ufikiaji wa Mapema","Email Our Team":"Tuma Barua kwa Timu Yetu",
-        "AI-powered youth wellness":"Ustawi wa vijana unaotumia AI",
-        "Cheza. Play. Heal. Grow.":"Cheza. Cheza. Ponya. Kua."
-      },
-      rw: {
-        "Problem":"Ikibazo","Solution":"Igisubizo","Games":"Imikino","Model":"Uburyo","Impact":"Ingaruka","Team":"Itsinda",
-        "Join Waitlist":"Iyandikishe ku Rutonde","Join the Waitlist":"Iyandikishe ku Rutonde","See How It Works":"Reba Uko Bikora","Watch Demo":"Reba Demo",
-        "The problem":"Ikibazo","Youth need support before crisis point.":"Urubyiruko rukeneye ubufasha mbere y'uko ikibazo gikomera.",
-        "The solution":"Igisubizo","A gamified wellness platform built for African children and adolescents.":"Urubuga rw'ubuzima bwo mu mutwe rufite imikino rwagenewe abana n'urubyiruko rw'Afurika.",
-        "Games":"Imikino","Play-based healing adventures for young minds.":"Kwamamaza gukira binyuze mu mikino ku bitekerezo bikiri bito.",
-        "Why Cheza 4 Afya Akili":"Impamvu Cheza 4 Afya Akili","Built FOR Africa, not imported to Africa.":"Byubakiwe Afurika, si ikintu cyinjijwe muri Afurika.",
-        "Business model":"Uburyo bw'ubucuruzi","Sustainable revenue while keeping core access free.":"Kwamamaza amafaranga arambye mu gihe serivisi z'ibanze zikomeza kuba ubuntu.",
-        "Scalability":"Kwamamaza kwaguka","From East Africa to the Global South.":"Kuva muri Afurika y'Iburasirazuba kugera mu Bihugu byo mu Majyepfo.",
-        "Impact metrics":"Ibipimo by'ingaruka","How success will be measured.":"Uko intsinzi izapimwa.",
-        "Meet the team":"Menya itsinda","The people building Cheza 4 Afya Akili.":"Abantu bari kubaka Cheza 4 Afya Akili.",
-        "Help build the future of youth mental health in Africa.":"Fasha kubaka ejo hazaza h'ubuzima bwo mu mutwe bw'urubyiruko muri Afurika.",
-        "Request Early Access":"Saba Kwinjira Mbere","Email Our Team":"Ohereza Imeri ku Itsinda",
-        "AI-powered youth wellness":"Ubuzima bw'urubyiruko bukoresha AI",
-        "Cheza. Play. Heal. Grow.":"Cheza. Kina. Kira. Kura."
-      }
-    };
-
-    // Preserve original English once, then translate all matching text nodes throughout the page.
-    const originalTextNodes = [];
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-    let textNode;
-    while ((textNode = walker.nextNode())) {
-      if (textNode.nodeValue.trim()) originalTextNodes.push([textNode, textNode.nodeValue]);
-    }
-
-    const translations = {
+    /* ---- FULL TRANSLATIONS ---- */
+    const T = {
       en: {
-        hero_subtitle: "Healing Through Play — mental wellness for African children and adolescents.",
-        hero_copy: "Cheza 4 Afya Akili combines games, African storytelling, emotional check-ins, and AI personalization to help young people build resilience in a safe, engaging, and culturally relevant way."
+        nav_problem:"Problem", nav_solution:"Solution", nav_games:"Games",
+        nav_model:"Model", nav_impact:"Impact", nav_team:"Team",
+        btn_waitlist:"Join Waitlist", btn_waitlist_long:"Join the Waitlist",
+        btn_how:"See How It Works", btn_email:"Email Our Team",
+        hero_eyebrow:"AI-powered youth wellness",
+        hero_subtitle:"Healing Through Play — mental wellness for African children and adolescents.",
+        hero_copy:"Cheza 4 Afya Akili combines games, African storytelling, emotional check-ins, and AI personalization to help young people build resilience in a safe, engaging, and culturally relevant way.",
+        tag_ages:"Ages 6–19", tag_langs:"English · Kiswahili · Kinyarwanda",
+        problem_eyebrow:"The problem",
+        problem_title:"Youth need support before crisis point.",
+        problem_lead:"Many children and adolescents face emotional stress, anxiety, stigma, and limited access to youth-friendly mental health support. Cheza 4 Afya Akili is designed to make early support more accessible through play.",
+        p1_h:"Rising mental health crisis", p1_p:"Young people increasingly face anxiety, depression, stress, and substance-abuse risks.",
+        p2_h:"Limited youth-friendly support", p2_p:"Support services can be costly, stigmatized, hard to access, and not designed for children.",
+        p3_h:"Gaps in early detection", p3_p:"Many young people receive help only when problems have already become serious.",
+        p4_h:"Digital and cultural gaps", p4_p:"Many tools are not built around African youth realities, languages, stories, and communities.",
+        sol_eyebrow:"The solution",
+        sol_title:"A gamified wellness platform built for African children and adolescents.",
+        sol_lead:"Cheza 4 Afya Akili uses play, storytelling, AI, and emotional learning to make healing accessible, engaging, and culturally relevant. Instead of waiting for crisis, the platform helps young users check in, express emotions, learn coping skills, and grow over time.",
+        step1_h:"Check-in", step1_p:"Daily emotional mood tracking using text, voice, icons, and child-friendly prompts.",
+        step2_h:"AI personalization", step2_p:"Content adapts based on emotional state, learning pace, and user needs.",
+        step3_h:"Play-based healing", step3_p:"Games, stories, quests, and challenges turn emotional learning into adventure.",
+        step4_h:"Growth pathways", step4_p:"Users unlock coping skills, mentorship routes, and development opportunities.",
+        games_eyebrow:"Games",
+        games_title:"Play-based healing adventures for young minds.",
+        games_lead:"The platform separates content for children and adolescents so each age group receives support in a way that feels natural, safe, and age-appropriate.",
+        age_children:"Children 6–12", age_all:"All users", age_teens:"Teens 13–19",
+        g1_h:"Emotion Explorer Adventures", g1_p:"Children learn feelings through characters and simple stories that build emotional literacy.",
+        g2_h:"Calm Down Quests", g2_p:"Breathing and calming mini-games help children manage worry and anxiety.",
+        g3_h:"School Life Missions", g3_p:"Safe scenario games help children practice decisions around school, friendship, and bullying.",
+        g4_h:"Safe Voice Stories", g4_p:"AI turns feelings into stories, helping users express emotions when words are difficult.",
+        g5_h:"Identity Quest Lines", g5_p:"Life storytelling journeys help adolescents explore self-worth and personal identity.",
+        g6_h:"Peer Healing Circles", g6_p:"Anonymous group healing missions reduce isolation and encourage healthy peer support.",
+        why_eyebrow:"Why Cheza 4 Afya Akili",
+        why_title:"Built FOR Africa, not imported to Africa.",
+        why_lead:"The platform is rooted in African culture, local languages, oral storytelling, community healing, and real-life situations children face at home, school, and in friendships.",
+        w1_h:"African storytelling", w1_p:"Stories and characters are designed around local culture and lived realities.",
+        w2_h:"Local languages", w2_p:"Designed for Swahili, Sheng, Kinyarwanda, and future African languages.",
+        w3_h:"Community healing", w3_p:"Peer quests and group missions reflect the importance of community support.",
+        w4_h:"Mobile-first access", w4_p:"Built to scale digitally across schools, homes, NGOs, and youth programs.",
+        model_eyebrow:"Business model",
+        model_title:"Sustainable revenue while keeping core access free.",
+        model_lead:"Cheza 4 Afya Akili can serve children freely at the basic level while generating revenue through premium features, schools, NGOs, and government-supported youth programs.",
+        m1_h:"Freemium", m1_p:"Basic games and emotional check-ins remain free for youth.",
+        m2_h:"Premium", m2_p:"AI coaching, parent insights, and extended progress features.",
+        m3_h:"Schools", m3_p:"Curriculum support, dashboards, classroom programs, and reporting.",
+        m4_h:"NGOs / Governments", m4_p:"Youth access programs for wider community and public-health reach.",
+        scale_eyebrow:"Scalability",
+        scale_title:"From East Africa to the Global South.",
+        scale_lead:"The first phase focuses on Kenya, Tanzania, and Rwanda. The next phases expand across Africa and later to other Global South regions where culturally relevant youth mental wellness tools are needed.",
+        ph1_h:"Kenya, Tanzania, Rwanda", ph1_p:"Build the foundation in East Africa.",
+        ph2_h:"East + West Africa", ph2_p:"Reach more communities across the continent.",
+        ph3_h:"Global South", ph3_p:"Take healing through play to India, Latin America, and beyond.",
+        impact_eyebrow:"Impact metrics",
+        impact_title:"How success will be measured.",
+        impact_lead:"The platform will measure emotional resilience, anxiety reduction, engagement, help-seeking behavior, opportunity access, and cross-border collaboration.",
+        i1_h:"Students per country", i1_p:"Initial reach across Tanzania, Kenya, and Rwanda.",
+        i2_h:"Short-term schools", i2_p:"Early pilots with schools and youth-support partners.",
+        i3_h:"Long-term children", i3_p:"Future target reach across Africa.",
+        i4_h:"Long-term schools", i4_p:"Potential school network expansion over time.",
+        i5_h:"Future jobs", i5_p:"Long-term opportunity creation across the youth-wellness ecosystem.",
+        i6_h:"Launch countries", i6_p:"A shared mental-health platform across Rwanda, Kenya, and Tanzania.",
+        team_eyebrow:"Meet the team",
+        team_title:"The people building Cheza 4 Afya Akili.",
+        team_lead:"A multidisciplinary team combining product, mental-health programming, and technology expertise.",
+        role_cofounder:"Co-Founder", role_tech:"Co-Founder & Technology Lead",
+        cta_h2:"Help build the future of youth mental health in Africa.",
+        cta_p:"Join the waitlist, request early access, or contact the team for school, NGO, government, and funding partnerships.",
+        footer_copy:"© 2026 Cheza 4 Afya Akili. Cheza. Play. Heal. Grow."
       },
+
       sw: {
-        hero_subtitle: "Uponyaji Kupitia Michezo — afya ya akili kwa watoto na vijana wa Afrika.",
-        hero_copy: "Cheza 4 Afya Akili inachanganya michezo, hadithi za Kiafrika, tathmini za hisia na ubinafsishaji wa AI ili kuwasaidia vijana kujenga ustahimilivu kwa njia salama, ya kuvutia na inayozingatia utamaduni."
+        nav_problem:"Tatizo", nav_solution:"Suluhisho", nav_games:"Michezo",
+        nav_model:"Mfumo", nav_impact:"Matokeo", nav_team:"Timu",
+        btn_waitlist:"Jiunge na Orodha", btn_waitlist_long:"Jiunge na Orodha ya Kusubiri",
+        btn_how:"Tazama Jinsi Inavyofanya Kazi", btn_email:"Tuma Barua kwa Timu Yetu",
+        hero_eyebrow:"Ustawi wa vijana unaotumia AI",
+        hero_subtitle:"Uponyaji Kupitia Mchezo — afya ya akili kwa watoto na vijana wa Afrika.",
+        hero_copy:"Cheza 4 Afya Akili inachanganya michezo, hadithi za Kiafrika, tathmini za kihisia, na ubinafsishaji wa AI ili kuwasaidia vijana kujenga ustahimilivu kwa njia salama, ya kuvutia na inayozingatia utamaduni.",
+        tag_ages:"Umri 6–19", tag_langs:"Kiingereza · Kiswahili · Kinyarwanda",
+        problem_eyebrow:"Tatizo",
+        problem_title:"Vijana wanahitaji msaada kabla ya kufikia hatua ya mgogoro.",
+        problem_lead:"Watoto na vijana wengi wanakabiliwa na mfadhaiko wa kihisia, wasiwasi, stigma, na upatikanaji mdogo wa msaada wa afya ya akili unaofaa kwa vijana. Cheza 4 Afya Akili imeundwa ili kufanya msaada wa mapema upatikane zaidi kupitia mchezo.",
+        p1_h:"Msongo wa afya ya akili unaongezeka", p1_p:"Vijana wanaongezeka kukabiliwa na wasiwasi, unyogovu, msongo, na hatari za matumizi ya dawa.",
+        p2_h:"Msaada mdogo unaofaa kwa vijana", p2_p:"Huduma za msaada zinaweza kuwa za gharama, zina stigma, ngumu kupata, na hazijui kwa watoto.",
+        p3_h:"Mapungufu katika kugundua mapema", p3_p:"Vijana wengi hupata msaada tu wakati matatizo yamekuwa makubwa.",
+        p4_h:"Mapungufu ya kidijitali na kiutamaduni", p4_p:"Zana nyingi hazijengwi kwa ukweli wa vijana wa Afrika, lugha, hadithi, na jamii.",
+        sol_eyebrow:"Suluhisho",
+        sol_title:"Jukwaa la ustawi lenye michezo lililoundwa kwa watoto na vijana wa Afrika.",
+        sol_lead:"Cheza 4 Afya Akili inatumia mchezo, hadithi, AI, na kujifunza kihisia ili kufanya uponyaji upatikane, ushirikishwe, na uwe wa kiutamaduni. Badala ya kusubiri mgogoro, jukwaa husaidia watumiaji wachanga kuangalia hali zao, kuonyesha hisia, kujifunza ujuzi wa kukabiliana, na kukua.",
+        step1_h:"Angalia hali", step1_p:"Ufuatiliaji wa hisia za kila siku kwa kutumia maandishi, sauti, ikoni, na maelekezo yanayofaa kwa watoto.",
+        step2_h:"AI ya kibinafsi", step2_p:"Maudhui yanabadilika kulingana na hali ya kihisia, kasi ya kujifunza, na mahitaji ya mtumiaji.",
+        step3_h:"Uponyaji kupitia mchezo", step3_p:"Michezo, hadithi, maswali, na changamoto hubadilisha kujifunza kihisia kuwa matukio.",
+        step4_h:"Njia za ukuaji", step4_p:"Watumiaji wanafungua ujuzi wa kukabiliana, njia za ushauri, na fursa za maendeleo.",
+        games_eyebrow:"Michezo",
+        games_title:"Matukio ya uponyaji kupitia mchezo kwa akili changa.",
+        games_lead:"Jukwaa hutenganisha maudhui kwa watoto na vijana ili kila kundi la umri lipate msaada kwa njia inayofeel asili, salama, na inayofaa kwa umri.",
+        age_children:"Watoto 6–12", age_all:"Watumiaji wote", age_teens:"Vijana 13–19",
+        g1_h:"Matukio ya Kuchunguza Hisia", g1_p:"Watoto hujifunza hisia kupitia wahusika na hadithi rahisi zinazojenga ujuzi wa kihisia.",
+        g2_h:"Maswali ya Kutulia", g2_p:"Mchezo wa kupumua na kutulia husaidia watoto kudhibiti wasiwasi.",
+        g3_h:"Misheni ya Maisha ya Shule", g3_p:"Michezo ya hali salama husaidia watoto kufanya maamuzi kuhusu shule, urafiki, na unyanyasaji.",
+        g4_h:"Hadithi za Sauti Salama", g4_p:"AI hubadilisha hisia kuwa hadithi, kusaidia watumiaji kuonyesha hisia wakati maneno ni magumu.",
+        g5_h:"Mistari ya Utafutaji wa Utambulisho", g5_p:"Safari za hadithi za maisha husaidia vijana kuchunguza thamani ya kibinafsi na utambulisho.",
+        g6_h:"Duru za Uponyaji wa Rika", g6_p:"Misheni ya kikundi isiyojulikana hupunguza kutengwa na kuhimiza msaada mzuri wa rika.",
+        why_eyebrow:"Kwa nini Cheza 4 Afya Akili",
+        why_title:"Imeundwa KWA Afrika, si kuletwa tu Afrika.",
+        why_lead:"Jukwaa linazingatia utamaduni wa Afrika, lugha za kienyeji, hadithi za mdomo, uponyaji wa jamii, na hali za maisha halisi watoto wanazokabiliwa nazo nyumbani, shuleni, na katika urafiki.",
+        w1_h:"Hadithi za Kiafrika", w1_p:"Hadithi na wahusika wameundwa kuzunguka utamaduni wa kienyeji na hali halisi.",
+        w2_h:"Lugha za kienyeji", w2_p:"Imeundwa kwa Kiswahili, Sheng, Kinyarwanda, na lugha za Afrika za baadaye.",
+        w3_h:"Uponyaji wa jamii", w3_p:"Maswali ya rika na misheni ya kikundi yanaonyesha umuhimu wa msaada wa jamii.",
+        w4_h:"Ufikiaji wa kwanza wa simu", w4_p:"Imejengwa ili kupanua kidijitali katika shule, nyumba, NGO, na programu za vijana.",
+        model_eyebrow:"Mfumo wa biashara",
+        model_title:"Mapato endelevu huku huduma za msingi zikibaki bure.",
+        model_lead:"Cheza 4 Afya Akili inaweza kuhudumia watoto bila malipo kwa kiwango cha msingi huku ikizalisha mapato kupitia vipengele vya hali ya juu, shule, NGO, na programu za vijana zinazosaidhiwa na serikali.",
+        m1_h:"Freemium", m1_p:"Michezo ya msingi na angalizo za kihisia zinabaki bure kwa vijana.",
+        m2_h:"Premium", m2_p:"Mafunzo ya AI, maarifa ya wazazi, na vipengele vya maendeleo vilivyopanuliwa.",
+        m3_h:"Shule", m3_p:"Msaada wa mtaala, dashibodi, programu za darasa, na ripoti.",
+        m4_h:"NGO / Serikali", m4_p:"Programu za ufikiaji wa vijana kwa jamii pana na ufikiaji wa afya ya umma.",
+        scale_eyebrow:"Uwezo wa kupanuka",
+        scale_title:"Kutoka Afrika Mashariki hadi Kusini mwa Dunia.",
+        scale_lead:"Awamu ya kwanza inazingatia Kenya, Tanzania, na Rwanda. Awamu zinazofuata zinapanuka Afrika yote na baadaye kwa mikoa mingine ya Kusini mwa Dunia ambapo zana zinazofaa kiutamaduni za afya ya akili ya vijana zinahitajika.",
+        ph1_h:"Kenya, Tanzania, Rwanda", ph1_p:"Jenga msingi katika Afrika Mashariki.",
+        ph2_h:"Afrika Mashariki + Magharibi", ph2_p:"Fikia jamii zaidi katika bara.",
+        ph3_h:"Kusini mwa Dunia", ph3_p:"Peleka uponyaji kupitia mchezo India, Amerika ya Kusini, na zaidi.",
+        impact_eyebrow:"Vipimo vya matokeo",
+        impact_title:"Jinsi mafanikio yatakavyopimwa.",
+        impact_lead:"Jukwaa litapima ustahimilivu wa kihisia, kupunguza wasiwasi, ushirikiano, tabia ya kutafuta msaada, ufikiaji wa fursa, na ushirikiano wa kimataifa.",
+        i1_h:"Wanafunzi kwa nchi", i1_p:"Ufikiaji wa awali katika Tanzania, Kenya, na Rwanda.",
+        i2_h:"Shule za majaribio ya muda mfupi", i2_p:"Majaribio ya mapema na shule na washirika wa msaada wa vijana.",
+        i3_h:"Watoto wa muda mrefu", i3_p:"Lengo la ufikiaji wa baadaye katika Afrika.",
+        i4_h:"Shule za muda mrefu", i4_p:"Upanuzi wa mtandao wa shule unaowezekana baada ya muda.",
+        i5_h:"Kazi za baadaye", i5_p:"Uundaji wa fursa wa muda mrefu katika mfumo wa afya ya vijana.",
+        i6_h:"Nchi za kuzindua", i6_p:"Jukwaa la afya ya akili linaloshirikiwa Rwanda, Kenya, na Tanzania.",
+        team_eyebrow:"Kutana na timu",
+        team_title:"Watu wanaojenga Cheza 4 Afya Akili.",
+        team_lead:"Timu ya taaluma nyingi inayochanganya uzoefu wa bidhaa, programu za afya ya akili, na teknolojia.",
+        role_cofounder:"Mwanzilishi Mwenza", role_tech:"Mwanzilishi Mwenza & Mkurugenzi wa Teknolojia",
+        cta_h2:"Saidia kujenga mustakabali wa afya ya akili ya vijana barani Afrika.",
+        cta_p:"Jiunge na orodha ya kusubiri, omba ufikiaji wa mapema, au wasiliana na timu kwa ushirikiano wa shule, NGO, serikali, na ufadhili.",
+        footer_copy:"© 2026 Cheza 4 Afya Akili. Cheza. Cheza. Ponya. Kua."
       },
+
       rw: {
-        hero_subtitle: "Gukira Binyuze mu Mikino — ubuzima bwo mu mutwe ku bana n'urubyiruko rwo muri Afurika.",
-        hero_copy: "Cheza 4 Afya Akili ihuza imikino, inkuru z'Afurika, kwisuzuma ku byiyumvo n'ubwenge buhangano (AI) kugira ngo ifashe urubyiruko kubaka imbaraga zo guhangana n'ibibazo mu buryo butekanye kandi bujyanye n'umuco."
+        nav_problem:"Ikibazo", nav_solution:"Igisubizo", nav_games:"Imikino",
+        nav_model:"Uburyo", nav_impact:"Ingaruka", nav_team:"Itsinda",
+        btn_waitlist:"Iyandikishe ku Rutonde", btn_waitlist_long:"Iyandikishe ku Rutonde rw'Itegerezwa",
+        btn_how:"Reba Uko Bikora", btn_email:"Ohereza Imeri ku Itsinda",
+        hero_eyebrow:"Ubuzima bw'urubyiruko bukoresha AI",
+        hero_subtitle:"Gukira Binyuze mu Mikino — ubuzima bwo mu mutwe ku bana n'urubyiruko rwo muri Afurika.",
+        hero_copy:"Cheza 4 Afya Akili ihuza imikino, inkuru z'Afurika, kwisuzuma ku byiyumvo n'ubwenge buhangano (AI) kugira ngo ifashe urubyiruko kubaka imbaraga zo guhangana n'ibibazo mu buryo butekanye, bushimishije kandi bujyanye n'umuco.",
+        tag_ages:"Imyaka 6–19", tag_langs:"Icyongereza · Kiswahili · Ikinyarwanda",
+        problem_eyebrow:"Ikibazo",
+        problem_title:"Urubyiruko rukeneye ubufasha mbere y'uko ikibazo gikomera.",
+        problem_lead:"Abana n'urubyiruko benshi barwana n'umuhangayiko w'emotioneri, gutinya, ishyari, n'uburenganzira buke bwo kugera ku bufasha bw'ubuzima bwo mu mutwe buboneye urubyiruko. Cheza 4 Afya Akili yubatswe kugira ngo igire ubufasha bw'ibanze bwagera abantu benshi binyuze mu mikino.",
+        p1_h:"Ibibazo by'ubuzima bwo mu mutwe byiyongera", p1_p:"Urubyiruko rwinshi rwiyongera guhangana na gutinya, agahinda, imihangayiko, n'ibyago byo gukoresha ibiyobyabwenge.",
+        p2_h:"Ubufasha buke buboneye urubyiruko", p2_p:"Serivisi z'ubufasha zishobora kuba zihenze, zifite ishyari, bigorana kwinjira, kandi ntizubatswe ku bana.",
+        p3_h:"Ibyunyungu mu kugundura vuba", p3_p:"Urubyiruko rwinshi ruhabwa ubufasha gusa igihe ibibazo byakomeje bikabije.",
+        p4_h:"Ibyunyungu bya numerike n'umuco", p4_p:"Ibikoresho byinshi ntibubatswe ku ukuri k'urubyiruko rw'Afurika, indimi, inkuru, n'amatsinda.",
+        sol_eyebrow:"Igisubizo",
+        sol_title:"Urubuga rw'ubuzima rufite imikino rwagenewe abana n'urubyiruko rw'Afurika.",
+        sol_lead:"Cheza 4 Afya Akili ikoresha imikino, inkuru, AI, n'kwiga emotioneri kugira ngo igire gukira gukoreshwa vuba, bishimishije, kandi bijyanye n'umuco. Aho gutegereza ingabo, urubuga rufasha abakoresha bato kwisuzuma, kwerekana ibyiyumvo, kwiga ubuhanga bwo guhangana, no gukura.",
+        step1_h:"Isuzuma", step1_p:"Gukurikirana ibyiyumvo bya buri munsi hakoreshejwe inyandiko, ijwi, icyitegererezo, n'ibibazo bihuye n'abana.",
+        step2_h:"AI y'umuntu ku giti cye", step2_p:"Ibikoresho bivugurura hasubiweho imiterere y'emotioneri, intera yo kwiga, n'ibyo umukoresha akeneye.",
+        step3_h:"Gukira binyuze mu mikino", step3_p:"Imikino, inkuru, ibibazo, n'imihigo bigeuza kwiga emotioneri nk'inganzo.",
+        step4_h:"Inzira zo gukura", step4_p:"Abakoresha bafungura ubuhanga bwo guhangana, inzira z'ubujyanama, n'amahirwe yo guterana.",
+        games_eyebrow:"Imikino",
+        games_title:"Ibikorwa byo gukira binyuze mu mikino ku bitekerezo bito.",
+        games_lead:"Urubuga rutekanye ibikoresho ku bana no ku rubyiruko kugira ngo buri tsinda ry'imyaka rihabwe ubufasha mu buryo bushoboka, butekanye, kandi buboneye imyaka.",
+        age_children:"Abana 6–12", age_all:"Abakoresha bose", age_teens:"Urubyiruko 13–19",
+        g1_h:"Inganzo zo Gushakisha Ibyiyumvo", g1_p:"Abana biga ibyiyumvo binyuze mu bigaragambyo n'inkuru zoroheje zijenga ubumenyi bw'emotioneri.",
+        g2_h:"Ibibazo byo Gutuza", g2_p:"Imikino yo guhumeka no kutuza ifasha abana gucunga gutinya n'imihangayiko.",
+        g3_h:"Inzira z'Ubuzima bw'Ishuri", g3_p:"Imikino y'inyigo zitekanye ifasha abana gufata ibyemezo ku birebana n'ishuri, ubucuti, n'ubwikubitiro.",
+        g4_h:"Inkuru z'Ijwi Rirambye", g4_p:"AI igeuza ibyiyumvo inkuru, ifasha abakoresha kwerekana emotioneri igihe amagambo ari agoye.",
+        g5_h:"Mistari yo Gushakisha Indangagaciro", g5_p:"Inganzo zo gusobanura ubuzima zifasha urubyiruko gushakisha indangagaciro z'ubwigenge n'umwete.",
+        g6_h:"Amakoraniro yo Gukira y'Inziramuryango", g6_p:"Inzira z'umugabane zitazwi zikagabanya kwigutira kandi zigateza imbere ubufasha bwiza bw'inziramuryango.",
+        why_eyebrow:"Impamvu Cheza 4 Afya Akili",
+        why_title:"Yubatswe KU Bw'Afurika, si kintu cyatanzwe muri Afurika.",
+        why_lead:"Urubuga rushingiye ku muco w'Afurika, indimi z'inzibacyuho, inkuru z'akanwa, gukira kw'umugabane, n'imiterere y'ubuzima nyabwo abana bahura nayo i muhira, ku ishuri, no mu bucuti.",
+        w1_h:"Inkuru z'Afurika", w1_p:"Inkuru n'ibigaragambyo byubatswe ku muco w'inzibacyuho n'ukuri kwabo.",
+        w2_h:"Indimi z'inzibacyuho", w2_p:"Yubatswe ku Kiswahili, Sheng, Ikinyarwanda, n'indimi z'Afurika za mbere.",
+        w3_h:"Gukira kw'umugabane", w3_p:"Ibibazo by'inziramuryango n'inzira z'umugabane byerekana akamaro k'ubufasha bw'umugabane.",
+        w4_h:"Kwinjira kwa mbere kwa telefone", w4_p:"Yubatswe kugira ngo ikure mu buryo bwa numerike mu mashuri, amazu, NGO, n'gahunda z'urubyiruko.",
+        model_eyebrow:"Uburyo bw'ubucuruzi",
+        model_title:"Kwamamaza amafaranga arambye mu gihe serivisi z'ibanze zikomeza kuba ubuntu.",
+        model_lead:"Cheza 4 Afya Akili ishobora gukorera abana ubuntu ku rwego rw'ibanze mu gihe ibyara amafaranga binyuze mu bikorwa bya hali ya juu, amashuri, NGO, n'gahunda z'urubyiruko zihanganye na leta.",
+        m1_h:"Freemium", m1_p:"Imikino y'ibanze n'isuzuma ry'emotioneri bikomeza kuba ubuntu ku rubyiruko.",
+        m2_h:"Premium", m2_p:"Igenzura rya AI, ibisobanuro by'ababyeyi, n'ibiranga gutera imbere byagutse.",
+        m3_h:"Amashuri", m3_p:"Inkunga y'ibanze, dashipordi, gahunda z'icyumba cyo kwigira, n'raporo.",
+        m4_h:"NGO / Guverinoma", m4_p:"Gahunda z'injira z'urubyiruko ku mugabane w'abantu n'ufikiaji w'ubuzima bw'rubanda.",
+        scale_eyebrow:"Kwamamaza kwaguka",
+        scale_title:"Kuva muri Afurika y'Iburasirazuba kugera mu Bihugu byo mu Majyepfo.",
+        scale_lead:"Ingereka ya mbere igaragaza Rwanda, Kenya, na Tanzania. Ingereka zikurikiraho ziraguka ku Afurika yose hanyuma ku turere tw'ibihugu byo mu Majyepfo aho ibikoresho by'ubuzima bwo mu mutwe bw'urubyiruko bijyanye n'umuco bikenewe.",
+        ph1_h:"Kenya, Tanzania, Rwanda", ph1_p:"Baka inshingano mu Afurika y'Iburasirazuba.",
+        ph2_h:"Afurika y'Iburasirazuba + Iburengerazuba", ph2_p:"Gera ku matsinda menshi ku gikombe.",
+        ph3_h:"Bihugu byo mu Majyepfo", ph3_p:"Twara gukira binyuze mu mikino mu Buhinde, Amerika y'Epfo, no hejuru.",
+        impact_eyebrow:"Ibipimo by'ingaruka",
+        impact_title:"Uko intsinzi izapimwa.",
+        impact_lead:"Urubuga ruzapima imbaraga z'emotioneri, kugabanya gutinya, ufatanyabikorwa, imyitwarire yo gushaka ubufasha, ufikiaji w'amahirwe, n'ubufatanye bw'imitakara.",
+        i1_h:"Abanyeshuri ku gihugu", i1_p:"Ufikiaji w'ibanze mu Tanzania, Kenya, na Rwanda.",
+        i2_h:"Amashuri y'ikigo cy'igerageza", i2_p:"Igerageza ryo kare n'amashuri n'ababishyiraho b'urubyiruko.",
+        i3_h:"Abana b'igihe kirekire", i3_p:"Intego y'ufikiaji w'ejo hazaza mu Afurika.",
+        i4_h:"Amashuri y'igihe kirekire", i4_p:"Kwagura umuryango w'amashuri bishoboka mugihe.",
+        i5_h:"Akazi k'ejo hazaza", i5_p:"Uburemere bw'igihe kirekire bw'amahirwe mu mfumo w'ubuzima bw'urubyiruko.",
+        i6_h:"Ibihugu by'itangira", i6_p:"Urubuga rw'ubuzima bwo mu mutwe rusangirwa Rwanda, Kenya, na Tanzania.",
+        team_eyebrow:"Menya itsinda",
+        team_title:"Abantu bari kubaka Cheza 4 Afya Akili.",
+        team_lead:"Itsinda ry'inzobere nyinshi ryunga ubumenyi bw'ibikorwa, gahunda z'ubuzima bwo mu mutwe, n'ubumenyi bwa tekinolojiya.",
+        role_cofounder:"Umushyingurwa Mushya", role_tech:"Umushyingurwa Mushya & Umuyobozi w'Ikoranabuhanga",
+        cta_h2:"Fasha kubaka ejo hazaza h'ubuzima bwo mu mutwe bw'urubyiruko muri Afurika.",
+        cta_p:"Iyandikishe ku rutonde rw'itegerezwa, saba kwinjira mbere, cyangwa wasiliana n'itsinda ku bufatanye bw'ishuri, NGO, leta, n'inkunga.",
+        footer_copy:"© 2026 Cheza 4 Afya Akili. Cheza. Kina. Kira. Kura."
       }
     };
 
+    /* ---- APPLY TRANSLATIONS ---- */
     document.getElementById('languageSwitcher').addEventListener('change', function () {
       const lang = this.value;
-      document.documentElement.lang = lang;
-      originalTextNodes.forEach(([node, original]) => {
-        const trimmed = original.trim();
-        const translated = pageTranslations[lang] && pageTranslations[lang][trimmed];
-        if (translated) node.nodeValue = original.replace(trimmed, translated);
-        else node.nodeValue = original;
+      const t = T[lang];
+      if (!t) return;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
       });
-      document.querySelectorAll('[data-i18n]').forEach((el) => {
-        const key = el.dataset.i18n;
-        if (translations[lang][key]) el.textContent = translations[lang][key];
-      });
+      document.documentElement.lang = lang === 'sw' ? 'sw' : lang === 'rw' ? 'rw' : 'en';
     });
   </script>
 </body>
