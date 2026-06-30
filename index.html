@@ -598,6 +598,17 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
+
+    /* LANG SWITCHER */
+    .lang-switcher {
+      border-radius: 10px; padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.28);
+      font-family: "Nunito", sans-serif; font-size: 0.84rem; font-weight: 800;
+      background: rgba(255,255,255,0.12); color: var(--white);
+      cursor: pointer; transition: background 0.2s; flex-shrink: 0;
+    }
+    .lang-switcher:hover { background: rgba(255,255,255,0.22); }
+    .lang-switcher option { background: var(--purple-dark); color: var(--white); }
   </style>
 </head>
 <body>
@@ -608,7 +619,10 @@
 <nav class="nav" aria-label="Primary navigation">
   <div class="wrap nav-inner">
     <a class="brand" href="#top" aria-label="Cheza4Afya Akili home">
-      <div class="robot-logo" aria-hidden="true">
+      <img src="cheza logo.jpeg" alt="Cheza4Afya Akili logo"
+           style="width:44px;height:44px;object-fit:contain;border-radius:10px;flex-shrink:0;"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="robot-logo" style="display:none;" aria-hidden="true">
         <div class="r-antenna"></div>
         <div class="r-head"></div>
         <div class="r-body"></div>
@@ -622,6 +636,11 @@
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
 
     <div class="nav-links" id="navLinks" role="list">
+      <select id="languageSwitcher" class="lang-switcher" aria-label="Select language">
+        <option value="en">🇬🇧 English</option>
+        <option value="sw">🇹🇿 Kiswahili</option>
+        <option value="rw">🇷🇼 Kinyarwanda</option>
+      </select>
       <a href="#about">About</a>
       <a href="#solution">Solution</a>
       <a href="#games">Games</a>
@@ -645,15 +664,15 @@
     <div class="two-col" style="align-items:center; gap:48px;">
       <div>
         <div class="hero-badge">🌍 AI-Powered Youth Wellbeing</div>
-        <h1 class="display">
+        <h1 class="display" data-lang="hero_title">
           Growing <span class="accent">Strong Minds</span><br>Through Play
         </h1>
-        <p class="hero-desc" style="margin-top:20px;">
+        <p class="hero-desc" style="margin-top:20px;" data-lang="hero_desc">
           <strong>Cheza4Afya Akili</strong> is an AI-powered digital mental wellbeing platform for children and adolescents in Africa.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-green" href="https://forms.gle/VUsFSAW7BvtLRp748" target="_blank" rel="noopener">Try the Prototype</a>
-          <a class="btn btn-outline" href="#about">Learn More</a>
+          <a class="btn btn-green" href="https://forms.gle/VUsFSAW7BvtLRp748" target="_blank" rel="noopener" data-lang="btn_prototype">Try the Prototype</a>
+          <a class="btn btn-outline" href="#about" data-lang="btn_learn">Learn More</a>
         </div>
         <div class="hero-flags">
           <span class="flag-tag">🇰🇪 Kenya</span>
@@ -731,9 +750,9 @@
   <div class="wrap">
     <div class="two-col">
       <div>
-        <span class="eyebrow">Why Cheza Exists</span>
-        <h2 class="section-title">Children in Africa face real mental health challenges</h2>
-        <p class="lead">Many children and adolescents in Africa face stress, anxiety, bullying, trauma and emotional challenges with limited access to age-appropriate support. Cheza4Afya Akili is designed to close that gap.</p>
+        <span class="eyebrow" data-lang="about_eyebrow">Why Cheza Exists</span>
+        <h2 class="section-title" data-lang="about_title">Children in Africa face real mental health challenges</h2>
+        <p class="lead" data-lang="about_lead">Many children and adolescents in Africa face stress, anxiety, bullying, trauma and emotional challenges with limited access to age-appropriate support. Cheza4Afya Akili is designed to close that gap.</p>
       </div>
       <div>
         <div class="feature-icon-grid" style="justify-content:flex-start; margin-top:0;">
@@ -753,10 +772,10 @@
 <section class="section section-alt" id="solution">
   <div class="wrap">
     <div style="text-align:center; margin-bottom:8px;">
-      <span class="eyebrow">Our Solution</span>
+      <span class="eyebrow" data-lang="sol_eyebrow">Our Solution</span>
     </div>
-    <h2 class="section-title" style="text-align:center;">Cheza makes mental wellbeing engaging, accessible, and effective</h2>
-    <p class="lead" style="margin:14px auto 0; text-align:center;">Through AI, play, storytelling and practical tools — built specifically for African youth.</p>
+    <h2 class="section-title" style="text-align:center;" data-lang="sol_title">Cheza makes mental wellbeing engaging, accessible, and effective</h2>
+    <p class="lead" style="margin:14px auto 0; text-align:center;" data-lang="sol_lead">Through AI, play, storytelling and practical tools — built specifically for African youth.</p>
 
     <div class="solution-strip" style="margin-top:40px;">
       <div class="sol-item">
@@ -795,9 +814,9 @@
   <div class="wrap">
     <div class="two-col" style="align-items:center;">
       <div>
-        <span class="eyebrow">Meet Cheza</span>
-        <h2 class="section-title">Your AI wellbeing companion</h2>
-        <p class="lead">Cheza listens, understands and guides you on your journey to a healthier mind and a happier life. Available 24/7, Cheza speaks your language, knows your culture, and grows with you.</p>
+        <span class="eyebrow" data-lang="companion_eyebrow">Meet Cheza</span>
+        <h2 class="section-title" data-lang="companion_title">Your AI wellbeing companion</h2>
+        <p class="lead" data-lang="companion_lead">Cheza listens, understands and guides you on your journey to a healthier mind and a happier life. Available 24/7, Cheza speaks your language, knows your culture, and grows with you.</p>
 
         <div style="display:flex; flex-direction:column; gap:16px; margin-top:32px;">
           <div class="card" style="display:flex; align-items:center; gap:16px; padding:18px 22px;">
@@ -881,8 +900,8 @@
 ============================================================ -->
 <section class="section" id="games">
   <div class="wrap">
-    <span class="eyebrow">Healing Games</span>
-    <h2 class="section-title">Play-based healing adventures for young minds</h2>
+    <span class="eyebrow" data-lang="games_eyebrow">Healing Games</span>
+    <h2 class="section-title" data-lang="games_title">Play-based healing adventures for young minds</h2>
     <p class="lead">Separate, age-appropriate experiences for children and adolescents — each rooted in African storytelling and evidence-based mental wellness.</p>
 
     <div class="grid-3" style="margin-top:36px;">
@@ -933,8 +952,8 @@
   <div class="wrap">
     <div class="two-col">
       <div>
-        <span class="eyebrow">Who We Serve</span>
-        <h2 class="section-title">We are here for the whole village</h2>
+        <span class="eyebrow" data-lang="serve_eyebrow">Who We Serve</span>
+        <h2 class="section-title" data-lang="serve_title">We are here for the whole village</h2>
         <p class="lead">Cheza4Afya Akili is designed for every person who plays a role in a young person's wellbeing — from the child at the centre to the systems that surround them.</p>
         <div style="margin-top:28px; display:flex; flex-direction:column; gap:12px;">
           <div style="display:flex; align-items:center; gap:12px; font-family:'Nunito',sans-serif; font-size:0.96rem; font-weight:700;">
@@ -990,9 +1009,9 @@
 
     <!-- Vision Banner -->
     <div class="vision-banner" style="margin-top:52px;">
-      <h3>Our Vision</h3>
-      <p>To become Africa's leading digital mental wellness platform, empowering millions of children and adolescents to grow emotionally, confidently and resiliently.</p>
-      <a class="btn btn-green" href="#contact">Join Our Mission</a>
+      <h3 data-lang="vision_title">Our Vision</h3>
+      <p data-lang="vision_desc">To become Africa's leading digital mental wellness platform, empowering millions of children and adolescents to grow emotionally, confidently and resiliently.</p>
+      <a class="btn btn-green" href="#contact" data-lang="cta_join">Join Our Mission</a>
     </div>
   </div>
 </section>
@@ -1121,8 +1140,8 @@
 ============================================================ -->
 <section class="section" id="team">
   <div class="wrap">
-    <span class="eyebrow">Meet the Team</span>
-    <h2 class="section-title">The people building Cheza4Afya Akili</h2>
+    <span class="eyebrow" data-lang="team_eyebrow">Meet the Team</span>
+    <h2 class="section-title" data-lang="team_title">The people building Cheza4Afya Akili</h2>
     <p class="lead">A multidisciplinary team combining product, mental-health programming and technology expertise — one from each launch country.</p>
 
     <div class="grid-3" style="margin-top:40px; max-width:720px; margin-left:auto; margin-right:auto;">
@@ -1159,8 +1178,8 @@
 ============================================================ -->
 <section class="section section-alt" id="partners">
   <div class="wrap" style="text-align:center;">
-    <span class="eyebrow">Partners</span>
-    <h2 class="section-title">Built together, for greater impact</h2>
+    <span class="eyebrow" data-lang="partners_eyebrow">Partners</span>
+    <h2 class="section-title" data-lang="partners_title">Built together, for greater impact</h2>
     <p class="lead" style="margin:12px auto 0;">We collaborate with organisations that share our mission to improve youth mental health across Africa.</p>
 
     <div class="partners-logos">
@@ -1201,8 +1220,8 @@
   <div class="wrap">
     <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:36px;">
       <div>
-        <span class="eyebrow">Latest Updates</span>
-        <h2 class="section-title" style="margin-bottom:0;">News from Cheza4Afya Akili</h2>
+        <span class="eyebrow" data-lang="news_eyebrow">Latest Updates</span>
+        <h2 class="section-title" style="margin-bottom:0;" data-lang="news_title">News from Cheza4Afya Akili</h2>
       </div>
       <a class="btn btn-outline-dark" href="#contact">View All News</a>
     </div>
@@ -1238,8 +1257,8 @@
 ============================================================ -->
 <section class="section section-alt" id="contact">
   <div class="wrap">
-    <span class="eyebrow">Contact Us</span>
-    <h2 class="section-title">We'd love to hear from you</h2>
+    <span class="eyebrow" data-lang="contact_eyebrow">Contact Us</span>
+    <h2 class="section-title" data-lang="contact_title">We'd love to hear from you</h2>
 
     <div class="two-col" style="margin-top:36px; align-items:flex-start;">
       <div class="contact-form">
@@ -1325,11 +1344,11 @@
 ============================================================ -->
 <div class="cta-strip">
   <div class="wrap">
-    <h2>Help build the future of youth mental health in Africa</h2>
-    <p>Join the waitlist, request early access, or contact the team for school, NGO, government and funding partnerships.</p>
+    <h2 data-lang="cta_main">Help build the future of youth mental health in Africa</h2>
+    <p data-lang="cta_sub">Join the waitlist, request early access, or contact the team for school, NGO, government and funding partnerships.</p>
     <div class="cta-actions">
-      <a class="btn btn-green" href="https://forms.gle/VUsFSAW7BvtLRp748" target="_blank" rel="noopener">Join the Waitlist</a>
-      <a class="btn btn-outline" href="https://mail.google.com/mail/?view=cm&fs=1&to=afyaakilicheza@gmail.com&su=Partnership%20Inquiry%20-%20Cheza4Afya%20Akili" target="_blank" rel="noopener">Email Our Team</a>
+      <a class="btn btn-green" href="https://forms.gle/VUsFSAW7BvtLRp748" target="_blank" rel="noopener" data-lang="btn_waitlist">Join the Waitlist</a>
+      <a class="btn btn-outline" href="https://mail.google.com/mail/?view=cm&fs=1&to=afyaakilicheza@gmail.com&su=Partnership%20Inquiry%20-%20Cheza4Afya%20Akili" target="_blank" rel="noopener" data-lang="btn_email">Email Our Team</a>
     </div>
   </div>
 </div>
@@ -1406,7 +1425,144 @@
     });
   });
 
-  /* CONTACT FORM */
+  /* LANGUAGE SWITCHER */
+  const translations = {
+    en: {
+      hero_title: "Growing <span class='accent'>Strong Minds</span><br>Through Play",
+      hero_desc: "<strong>Cheza4Afya Akili</strong> is an AI-powered digital mental wellbeing platform for children and adolescents in Africa.",
+      btn_prototype: "Try the Prototype",
+      btn_learn: "Learn More",
+      about_eyebrow: "Why Cheza Exists",
+      about_title: "Children in Africa face real mental health challenges",
+      about_lead: "Many children and adolescents in Africa face stress, anxiety, bullying, trauma and emotional challenges with limited access to age-appropriate support. Cheza4Afya Akili is designed to close that gap.",
+      sol_eyebrow: "Our Solution",
+      sol_title: "Cheza makes mental wellbeing engaging, accessible, and effective",
+      sol_lead: "Through AI, play, storytelling and practical tools — built specifically for African youth.",
+      companion_eyebrow: "Meet Cheza",
+      companion_title: "Your AI wellbeing companion",
+      companion_lead: "Cheza listens, understands and guides you on your journey to a healthier mind and a happier life. Available 24/7, Cheza speaks your language, knows your culture, and grows with you.",
+      games_eyebrow: "Healing Games",
+      games_title: "Play-based healing adventures for young minds",
+      serve_eyebrow: "Who We Serve",
+      serve_title: "We are here for the whole village",
+      vision_title: "Our Vision",
+      vision_desc: "To become Africa's leading digital mental wellness platform, empowering millions of children and adolescents to grow emotionally, confidently and resiliently.",
+      cta_join: "Join Our Mission",
+      model_eyebrow: "Business Model",
+      model_title: "Sustainable revenue while keeping core access free",
+      scale_title: "From East Africa to the Global South",
+      impact_eyebrow: "Impact Metrics",
+      impact_title: "How we measure success",
+      team_eyebrow: "Meet the Team",
+      team_title: "The people building Cheza4Afya Akili",
+      partners_eyebrow: "Partners",
+      partners_title: "Built together, for greater impact",
+      news_eyebrow: "Latest Updates",
+      news_title: "News from Cheza4Afya Akili",
+      contact_eyebrow: "Contact Us",
+      contact_title: "We'd love to hear from you",
+      cta_main: "Help build the future of youth mental health in Africa",
+      cta_sub: "Join the waitlist, request early access, or contact the team for school, NGO, government and funding partnerships.",
+      btn_waitlist: "Join the Waitlist",
+      btn_email: "Email Our Team"
+    },
+    sw: {
+      hero_title: "Kukua <span class='accent'>Akili Imara</span><br>Kupitia Mchezo",
+      hero_desc: "<strong>Cheza4Afya Akili</strong> ni jukwaa la kidijitali la afya ya akili linalotumiwa na AI kwa watoto na vijana barani Afrika.",
+      btn_prototype: "Jaribu Mfano",
+      btn_learn: "Jifunze Zaidi",
+      about_eyebrow: "Kwa Nini Cheza Ipo",
+      about_title: "Watoto barani Afrika wanakabiliwa na changamoto halisi za afya ya akili",
+      about_lead: "Watoto na vijana wengi barani Afrika wanakabiliwa na msongo, wasiwasi, unyanyasaji, kiwewe na changamoto za kihisia huku wakiwa na ufikiaji mdogo wa msaada unaofaa kwa umri wao.",
+      sol_eyebrow: "Suluhisho Letu",
+      sol_title: "Cheza inafanya ustawi wa akili kuwa wa kuvutia, wa kufikiwa na wenye ufanisi",
+      sol_lead: "Kupitia AI, michezo, hadithi na zana za vitendo — zilizoundwa mahsusi kwa vijana wa Afrika.",
+      companion_eyebrow: "Kutana na Cheza",
+      companion_title: "Mwenzako wa AI wa ustawi",
+      companion_lead: "Cheza husikiliza, kuelewa na kukuongoza katika safari yako kuelekea akili yenye afya na maisha yenye furaha. Inapatikana masaa 24/7, Cheza inasema lugha yako na inajua utamaduni wako.",
+      games_eyebrow: "Michezo ya Uponyaji",
+      games_title: "Matukio ya uponyaji kupitia mchezo kwa akili changa",
+      serve_eyebrow: "Tunaowahusu",
+      serve_title: "Tuko hapa kwa kijiji chote",
+      vision_title: "Maono Yetu",
+      vision_desc: "Kuwa jukwaa linaloongoza la kidijitali la ustawi wa akili barani Afrika, linaloweza kuwawezesha mamilioni ya watoto na vijana kukua kwa kihisia, kwa ujasiri na kwa ustahimilivu.",
+      cta_join: "Jiunge na Dhamira Yetu",
+      model_eyebrow: "Mfumo wa Biashara",
+      model_title: "Mapato endelevu huku ufikiaji wa msingi ukibaki bure",
+      scale_title: "Kutoka Afrika Mashariki hadi Kusini mwa Dunia",
+      impact_eyebrow: "Vipimo vya Matokeo",
+      impact_title: "Jinsi tunavyopima mafanikio",
+      team_eyebrow: "Kutana na Timu",
+      team_title: "Watu wanaojenga Cheza4Afya Akili",
+      partners_eyebrow: "Washirika",
+      partners_title: "Tumejenga pamoja, kwa athari kubwa zaidi",
+      news_eyebrow: "Habari za Hivi Karibuni",
+      news_title: "Habari kutoka Cheza4Afya Akili",
+      contact_eyebrow: "Wasiliana Nasi",
+      contact_title: "Tungependa kusikia kutoka kwako",
+      cta_main: "Saidia kujenga mustakabali wa afya ya akili ya vijana barani Afrika",
+      cta_sub: "Jiunge na orodha ya kusubiri, omba ufikiaji wa mapema, au wasiliana na timu kwa ushirikiano wa shule, NGO, serikali na ufadhili.",
+      btn_waitlist: "Jiunge na Orodha",
+      btn_email: "Tuma Barua kwa Timu"
+    },
+    rw: {
+      hero_title: "Gukura <span class='accent'>Bitekerezo Bikomeye</span><br>Binyuze mu Mikino",
+      hero_desc: "<strong>Cheza4Afya Akili</strong> ni urubuga rw'ikoranabuhanga rw'ubuzima bwo mu mutwe rukoresha AI ku bana n'urubyiruko muri Afurika.",
+      btn_prototype: "Gerageza Prototype",
+      btn_learn: "Menya Byinshi",
+      about_eyebrow: "Impamvu Cheza Ihari",
+      about_title: "Abana muri Afurika barwana n'ibibazo nyabyo by'ubuzima bwo mu mutwe",
+      about_lead: "Abana n'urubyiruko benshi muri Afurika barwana n'imihangayiko, gutinya, guhohoterwa, trauma n'ibibazo by'emotioneri bifite uburenganzira buke bwo kugera ku bufasha buboneye imyaka yabo.",
+      sol_eyebrow: "Igisubizo Cyacu",
+      sol_title: "Cheza igira ubuzima bwo mu mutwe bushimishije, buhuriweho kandi bwiza",
+      sol_lead: "Binyuze muri AI, imikino, inkuru n'ibikoresho by'ibikorwa — byubatswe by'umwihariko ku rubyiruko rw'Afurika.",
+      companion_eyebrow: "Menya Cheza",
+      companion_title: "Inshuti yawe ya AI y'ubuzima",
+      companion_lead: "Cheza yumva, yumva kandi ikuyobora mu rugendo rwawe rwo kugera ku mutwe mwiza n'ubuzima bushimishije. Ikoreshwa amasaha 24/7, Cheza ivuga ururimi rwawe kandi izi umuco wawe.",
+      games_eyebrow: "Imikino y'Gukira",
+      games_title: "Ibikorwa byo gukira binyuze mu mikino ku bitekerezo bito",
+      serve_eyebrow: "Abatugenewe",
+      serve_title: "Turi hano ku muryango wose",
+      vision_title: "Inzozi Zacu",
+      vision_desc: "Kuba urubuga ruganisha rw'ikoranabuhanga rw'ubuzima bwo mu mutwe muri Afurika, rushobora gutera inkunga za miliyoni z'abana n'urubyiruko gukura mu bwunvikane, gutuza no guhangana n'ibibazo.",
+      cta_join: "Injira mu Ntego Yacu",
+      model_eyebrow: "Uburyo bw'Ubucuruzi",
+      model_title: "Amafaranga arambye mu gihe serivisi z'ibanze zikomeza kuba ubuntu",
+      scale_title: "Kuva muri Afurika y'Iburasirazuba kugera mu Bihugu byo mu Majyepfo",
+      impact_eyebrow: "Ibipimo by'Ingaruka",
+      impact_title: "Uko dupima intsinzi",
+      team_eyebrow: "Menya Itsinda",
+      team_title: "Abantu bari kubaka Cheza4Afya Akili",
+      partners_eyebrow: "Abafatanyabikorwa",
+      partners_title: "Twubatse hamwe, kugira ingaruka nyinshi",
+      news_eyebrow: "Amakuru Mashya",
+      news_title: "Amakuru avuye Cheza4Afya Akili",
+      contact_eyebrow: "Twandikire",
+      contact_title: "Twishimiye kukumva",
+      cta_main: "Fasha kubaka ejo hazaza h'ubuzima bwo mu mutwe bw'urubyiruko muri Afurika",
+      cta_sub: "Iyandikishe ku rutonde rw'itegerezwa, saba kwinjira mbere, cyangwa wasiliana n'itsinda ku bufatanye bw'ishuri, NGO, leta n'inkunga.",
+      btn_waitlist: "Iyandikishe ku Rutonde",
+      btn_email: "Ohereza Imeri ku Itsinda"
+    }
+  };
+
+  document.getElementById('languageSwitcher').addEventListener('change', function() {
+    const lang = this.value;
+    const t = translations[lang];
+    if (!t) return;
+    // Update keyed elements
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      const key = el.getAttribute('data-lang');
+      if (t[key] !== undefined) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = t[key];
+        } else {
+          el.innerHTML = t[key];
+        }
+      }
+    });
+    document.documentElement.lang = lang === 'sw' ? 'sw' : lang === 'rw' ? 'rw' : 'en';
+  });
   function handleFormSubmit(e) {
     e.preventDefault();
     const name  = document.getElementById('cf-name').value.trim();
