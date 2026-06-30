@@ -11,9 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ============================================================
-       TOKENS
-    ============================================================ */
+
     :root {
       --purple-dark:   #2D1B69;
       --purple-mid:    #4A2FA0;
@@ -37,9 +35,7 @@
       --max-width:     1160px;
     }
 
-    /* ============================================================
-       RESET & BASE
-    ============================================================ */
+ 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -57,10 +53,7 @@
       outline-offset: 4px;
       border-radius: 8px;
     }
-
-    /* ============================================================
-       LAYOUT HELPERS
-    ============================================================ */
+ 
     .wrap { width: min(var(--max-width), calc(100% - 40px)); margin: 0 auto; }
     .section { padding: 88px 0; }
     .section-alt { background: var(--purple-pale); }
@@ -73,10 +66,7 @@
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .two-col.flip > *:first-child { order: 2; }
     .two-col.flip > *:last-child { order: 1; }
-
-    /* ============================================================
-       TYPOGRAPHY
-    ============================================================ */
+ 
     .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: "Nunito", sans-serif;
@@ -96,9 +86,7 @@
     .section-dark .lead { color: rgba(255,255,255,0.72); }
     .section-alt .lead { color: var(--purple-mid); }
 
-    /* ============================================================
-       BUTTONS
-    ============================================================ */
+ 
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       min-height: 48px; padding: 13px 26px;
@@ -115,9 +103,7 @@
     .btn-outline-dark { border-color: var(--purple-mid); color: var(--purple-mid); background: transparent; }
     .btn-outline-dark:hover { background: var(--purple-mid); color: var(--white); transform: translateY(-2px); }
 
-    /* ============================================================
-       CARDS
-    ============================================================ */
+
     .card {
       background: var(--white); border: 1px solid var(--border);
       border-radius: var(--radius-md); padding: 28px;
@@ -139,9 +125,7 @@
     }
     .icon-circle.green { background: var(--green-light); }
 
-    /* ============================================================
-       NAV
-    ============================================================ */
+ 
     .nav {
       position: sticky; top: 0; z-index: 100;
       background: var(--purple-dark);
@@ -205,9 +189,7 @@
       padding: 9px 12px; font-size: 1rem; cursor: pointer;
     }
 
-    /* ============================================================
-       HERO
-    ============================================================ */
+
     .hero {
       background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-mid) 60%, #6B3FC0 100%);
       min-height: calc(100vh - 72px); padding: 80px 0 60px;
@@ -285,9 +267,7 @@
     .float-pill.p1 { bottom: 55%; left: 15%; animation-delay: 0.5s; }
     .float-pill.p2 { bottom: 20%; left: 0%; animation-delay: 1.2s; }
 
-    /* ============================================================
-       WHY CHEZA EXISTS (icon feature grid)
-    ============================================================ */
+ 
     .feature-icon-grid { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 36px; }
     .feat-pill {
       display: flex; flex-direction: column; align-items: center; gap: 8px;
@@ -301,9 +281,7 @@
     .feat-pill .fi { font-size: 2rem; }
     .feat-pill span { font-family: "Nunito", sans-serif; font-size: 0.86rem; font-weight: 800; color: var(--ink); }
 
-    /* ============================================================
-       SOLUTION STRIP
-    ============================================================ */
+ 
     .solution-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 40px; }
     .sol-item {
       display: flex; flex-direction: column; align-items: center; gap: 10px;
@@ -317,9 +295,7 @@
     .sol-item h4 { font-family: "Nunito", sans-serif; font-size: 0.88rem; font-weight: 900; color: var(--ink); }
     .sol-item p { font-size: 0.78rem; color: var(--muted); }
 
-    /* ============================================================
-       WHO WE SERVE
-    ============================================================ */
+ 
     .serve-cards { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 36px; }
     .serve-card {
       flex: 1; min-width: 140px; max-width: 180px;
@@ -333,9 +309,7 @@
     .serve-card h4 { font-family: "Nunito", sans-serif; font-size: 0.9rem; font-weight: 900; }
     .serve-card p { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
 
-    /* ============================================================
-       VISION BANNER
-    ============================================================ */
+ 
     .vision-banner {
       background: linear-gradient(135deg, var(--purple-mid), var(--purple-dark));
       border-radius: var(--radius-lg); padding: 48px; color: var(--white);
@@ -348,9 +322,7 @@
     .vision-banner h3 { font-family: "Nunito", sans-serif; font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 900; margin-bottom: 14px; position: relative; }
     .vision-banner p { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 28px; position: relative; }
 
-    /* ============================================================
-       MEET CHEZA (AI Companion)
-    ============================================================ */
+ 
     .cheza-visual {
       position: relative; min-height: 400px;
       display: flex; align-items: center; justify-content: center;
@@ -427,30 +399,22 @@
     .cheza-bubble.b2 { bottom: 60px; left: -20px; }
     .cheza-bubble .emoji { font-size: 1.4rem; margin-bottom: 4px; }
 
-    /* ============================================================
-       GAMES SECTION
-    ============================================================ */
+ 
     .age-tab { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 0.72rem; font-weight: 800; font-family: "Nunito", sans-serif; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
     .age-children { background: #E8F4FF; color: #1A5FA8; }
     .age-teens    { background: #FFF3E0; color: #B06000; }
     .age-all      { background: var(--green-light); color: var(--green-dark); }
 
-    /* ============================================================
-       BUSINESS MODEL
-    ============================================================ */
+ 
     .model-card { border-top: 5px solid var(--green); }
     .model-price { font-family: "Nunito", sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--purple-mid); margin: 8px 0; }
 
-    /* ============================================================
-       IMPACT / METRICS
-    ============================================================ */
+ 
     .metric-num { font-family: "Nunito", sans-serif; font-size: 2.6rem; font-weight: 900; color: var(--purple-mid); line-height: 1; margin-bottom: 8px; }
     .metric-label { font-size: 0.88rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; font-family: "Nunito", sans-serif; }
     .metric-desc { font-size: 0.82rem; color: var(--muted); }
 
-    /* ============================================================
-       SCALABILITY PHASES
-    ============================================================ */
+ 
     .phase-row { display: flex; flex-direction: column; gap: 20px; }
     .phase-item { display: flex; gap: 20px; align-items: flex-start; }
     .phase-num {
@@ -462,9 +426,7 @@
     .phase-item h4 { font-family: "Nunito", sans-serif; font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
     .phase-item p { font-size: 0.9rem; color: var(--muted); }
 
-    /* ============================================================
-       TEAM
-    ============================================================ */
+ 
     .team-card { text-align: center; }
     .team-photo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: top center; border: 4px solid var(--green); margin: 0 auto 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.14); }
     .team-photo-placeholder { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, var(--purple-pale), var(--green-light)); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; border: 4px solid var(--green); }
@@ -472,9 +434,7 @@
     .team-card .role { font-size: 0.84rem; color: var(--purple-mid); font-weight: 700; font-family: "Nunito", sans-serif; margin-top: 4px; }
     .team-card .country { font-size: 1.1rem; margin-top: 6px; }
 
-    /* ============================================================
-       PARTNERS
-    ============================================================ */
+ 
     .partners-logos { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center; margin-top: 36px; }
     .partner-chip {
       background: var(--white); border: 2px solid var(--border);
@@ -487,9 +447,7 @@
     .partner-chip:hover { border-color: var(--purple-mid); box-shadow: var(--shadow-md); }
     .partner-chip .pc-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-top: 4px; }
 
-    /* ============================================================
-       NEWS / UPDATES
-    ============================================================ */
+ 
     .news-card { display: flex; flex-direction: column; }
     .news-date { font-size: 0.78rem; font-weight: 700; color: var(--purple-light); font-family: "Nunito", sans-serif; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
     .news-tag { display: inline-block; background: var(--purple-pale); color: var(--purple-mid); padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 800; font-family: "Nunito", sans-serif; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
@@ -498,9 +456,7 @@
     .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; color: var(--purple-mid); font-size: 0.86rem; font-weight: 800; font-family: "Nunito", sans-serif; margin-top: 16px; transition: gap 0.2s; }
     .news-card .read-more:hover { gap: 8px; }
 
-    /* ============================================================
-       CONTACT
-    ============================================================ */
+   
     .contact-form { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md); }
     .form-group { margin-bottom: 20px; }
     .form-group label { display: block; font-family: "Nunito", sans-serif; font-size: 0.88rem; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
@@ -528,9 +484,7 @@
     }
     .social-link:hover { background: var(--purple-mid); transform: translateY(-2px); }
 
-    /* ============================================================
-       CTA STRIP
-    ============================================================ */
+ 
     .cta-strip {
       background: linear-gradient(135deg, var(--purple-dark), var(--purple-mid));
       padding: 80px 0; text-align: center; color: var(--white);
@@ -545,9 +499,7 @@
     .cta-strip p { color: rgba(255,255,255,0.76); max-width: 640px; margin: 0 auto 32px; font-size: 1.05rem; }
     .cta-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
 
-    /* ============================================================
-       FOOTER
-    ============================================================ */
+ 
     footer {
       background: #1A1035; color: rgba(255,255,255,0.68);
       padding: 48px 0 28px;
@@ -562,9 +514,7 @@
     .footer-bottom p { font-size: 0.82rem; }
     .footer-tagline { font-family: "Nunito", sans-serif; font-weight: 800; color: var(--green); font-size: 0.88rem; }
 
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
+ 
     @media (max-width: 980px) {
       .two-col { grid-template-columns: 1fr; gap: 40px; }
       .two-col.flip > *:first-child { order: 0; }
@@ -599,7 +549,7 @@
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
 
-    /* LANG SWITCHER */
+     
     .lang-switcher {
       border-radius: 10px; padding: 8px 12px;
       border: 1px solid rgba(255,255,255,0.28);
@@ -613,9 +563,7 @@
 </head>
 <body>
 
-<!-- ============================================================
-     NAV
-============================================================ -->
+ 
 <nav class="nav" aria-label="Primary navigation">
   <div class="wrap nav-inner">
     <a class="brand" href="#top" aria-label="Cheza4Afya Akili home">
@@ -656,9 +604,7 @@
 
 <main id="top">
 
-<!-- ============================================================
-     HERO
-============================================================ -->
+ 
 <header class="hero">
   <div class="wrap">
     <div class="two-col" style="align-items:center; gap:48px;">
@@ -734,7 +680,7 @@
             </div>
           </div>
 
-          <!-- Floating pills -->
+           
           <div class="float-pill p1">🧠 Mental Wellness</div>
           <div class="float-pill p2">🎯 AI Personalized</div>
         </div>
@@ -743,9 +689,7 @@
   </div>
 </header>
 
-<!-- ============================================================
-     ABOUT / WHY CHEZA EXISTS
-============================================================ -->
+ 
 <section class="section" id="about">
   <div class="wrap">
     <div class="two-col">
@@ -766,9 +710,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     SOLUTION / THE PLATFORM
-============================================================ -->
+ 
 <section class="section section-alt" id="solution">
   <div class="wrap">
     <div style="text-align:center; margin-bottom:8px;">
@@ -807,9 +749,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     MEET CHEZA — AI COMPANION
-============================================================ -->
+ 
 <section class="section section-dark" id="ai-companion">
   <div class="wrap">
     <div class="two-col" style="align-items:center;">
@@ -845,7 +785,7 @@
         <a class="btn btn-green" href="#contact" style="margin-top:28px;">Learn About Cheza</a>
       </div>
 
-      <!-- Cheza Robot CSS Illustration -->
+       
       <div class="cheza-visual">
         <div class="cheza-bubble b1">
           <div class="emoji">😊</div>
@@ -895,9 +835,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     GAMES
-============================================================ -->
+ 
 <section class="section" id="games">
   <div class="wrap">
     <span class="eyebrow" data-lang="games_eyebrow">Healing Games</span>
@@ -945,9 +883,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     WHO WE SERVE
-============================================================ -->
+ 
 <section class="section section-alt" id="who-we-serve">
   <div class="wrap">
     <div class="two-col">
@@ -1007,7 +943,7 @@
       </div>
     </div>
 
-    <!-- Vision Banner -->
+     
     <div class="vision-banner" style="margin-top:52px;">
       <h3 data-lang="vision_title">Our Vision</h3>
       <p data-lang="vision_desc">To become Africa's leading digital mental wellness platform, empowering millions of children and adolescents to grow emotionally, confidently and resiliently.</p>
@@ -1015,10 +951,7 @@
     </div>
   </div>
 </section>
-
-<!-- ============================================================
-     BUSINESS MODEL
-============================================================ -->
+ 
 <section class="section" id="model">
   <div class="wrap">
     <span class="eyebrow">Business Model</span>
@@ -1054,9 +987,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     SCALABILITY
-============================================================ -->
+ 
 <section class="section section-dark">
   <div class="wrap">
     <div class="two-col">
@@ -1092,9 +1023,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     IMPACT METRICS
-============================================================ -->
+ 
 <section class="section section-green" id="impact">
   <div class="wrap">
     <span class="eyebrow">Impact Metrics</span>
@@ -1134,10 +1063,7 @@
     </div>
   </div>
 </section>
-
-<!-- ============================================================
-     TEAM
-============================================================ -->
+ 
 <section class="section" id="team">
   <div class="wrap">
     <span class="eyebrow" data-lang="team_eyebrow">Meet the Team</span>
@@ -1172,10 +1098,7 @@
     </div>
   </div>
 </section>
-
-<!-- ============================================================
-     PARTNERS
-============================================================ -->
+ 
 <section class="section section-alt" id="partners">
   <div class="wrap" style="text-align:center;">
     <span class="eyebrow" data-lang="partners_eyebrow">Partners</span>
@@ -1212,10 +1135,7 @@
     </div>
   </div>
 </section>
-
-<!-- ============================================================
-     NEWS & UPDATES
-============================================================ -->
+ 
 <section class="section" id="news">
   <div class="wrap">
     <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:36px;">
@@ -1252,9 +1172,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     CONTACT
-============================================================ -->
+ 
 <section class="section section-alt" id="contact">
   <div class="wrap">
     <span class="eyebrow" data-lang="contact_eyebrow">Contact Us</span>
@@ -1328,7 +1246,7 @@
           </div>
         </div>
 
-        <!-- Quote callout -->
+         
         <div style="background:var(--purple-dark); color:var(--white); border-radius:var(--radius-md); padding:28px; margin-top:8px;">
           <div style="font-size:2rem; margin-bottom:12px;">💬</div>
           <p style="font-family:'Nunito',sans-serif; font-size:1.02rem; font-weight:800; line-height:1.4; font-style:italic;">"Every child deserves a safe place to feel, learn and grow."</p>
@@ -1339,9 +1257,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     CTA STRIP
-============================================================ -->
+ 
 <div class="cta-strip">
   <div class="wrap">
     <h2 data-lang="cta_main">Help build the future of youth mental health in Africa</h2>
@@ -1355,15 +1271,16 @@
 
 </main>
 
-<!-- ============================================================
-     FOOTER
-============================================================ -->
+ 
 <footer>
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="#top" aria-label="Cheza4Afya Akili home" style="margin-bottom:16px;">
-          <div class="robot-logo" aria-hidden="true">
+          <img src="cheza logo.jpeg" alt="Cheza4Afya Akili logo"
+           style="width:44px;height:44px;object-fit:contain;border-radius:10px;flex-shrink:0;"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="robot-logo" aria-hidden="true">  
             <div class="r-antenna"></div>
             <div class="r-head"></div>
             <div class="r-body"></div>
@@ -1405,11 +1322,9 @@
   </div>
 </footer>
 
-<!-- ============================================================
-     SCRIPTS
-============================================================ -->
+ 
 <script>
-  /* MENU TOGGLE */
+   
   const menuBtn = document.getElementById('menuBtn');
   const navLinks = document.getElementById('navLinks');
   menuBtn.addEventListener('click', () => {
@@ -1550,7 +1465,7 @@
     const lang = this.value;
     const t = translations[lang];
     if (!t) return;
-    // Update keyed elements
+     
     document.querySelectorAll('[data-lang]').forEach(el => {
       const key = el.getAttribute('data-lang');
       if (t[key] !== undefined) {
@@ -1578,7 +1493,7 @@
     window.open('https://mail.google.com/mail/?view=cm&fs=1&to=afyaakilicheza@gmail.com&su=' + subject + '&body=' + body, '_blank');
   }
 
-  /* SCROLL-REVEAL (subtle fade-in) */
+   
   if ('IntersectionObserver' in window) {
     const style = document.createElement('style');
     style.textContent = '.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.55s ease,transform 0.55s ease}.reveal.visible{opacity:1;transform:none}';
